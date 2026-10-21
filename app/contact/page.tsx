@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/editorial";
 import { submitContact, type FieldError } from "./actions";
 import { site } from "@/lib/site";
+import { PageTransition } from "@/components/page-transition";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact the LASUSMA Research & Journal Club about joining a project, collaborating, or requesting a speaker.",
+    "Contact the LASUMSA Research & Journal Club about joining a project, collaborating, or requesting a speaker.",
 };
 
 const ERRORS: Record<FieldError, string> = {
@@ -45,13 +46,13 @@ export default async function ContactPage({
   const fieldError = (error ?? null) as FieldError | null;
   const sentOk = sent === "1";
 
-  const mailtoSubject = encodeURIComponent("Enquiry — LASUSMA Research & Journal Club");
+  const mailtoSubject = encodeURIComponent("Enquiry — LASUMSA Research & Journal Club");
   const mailtoBody = encodeURIComponent(
     "Name:\nAffiliation:\n\nMessage:\n",
   );
 
   return (
-    <>
+    <PageTransition>
       <PageHeader
         eyebrow="Contact"
         title="Collaborate with us"
@@ -250,6 +251,6 @@ export default async function ContactPage({
           </aside>
         </div>
       </div>
-    </>
+    </PageTransition>
   );
 }

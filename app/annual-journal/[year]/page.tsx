@@ -4,6 +4,7 @@ import { ArrowLink, PageHeader } from "@/components/editorial";
 import { Mdx } from "@/components/mdx";
 import { getIssue, getIssueYears } from "@/lib/content";
 import { site } from "@/lib/site";
+import { PageTransition } from "@/components/page-transition";
 
 type Params = { params: Promise<{ year: string }> };
 
@@ -39,7 +40,7 @@ export default async function IssuePage({ params }: Params) {
   const contributors = [...new Set(entries.flatMap((e) => e.authors))];
 
   return (
-    <>
+    <PageTransition>
       <PageHeader
         eyebrow={`Annual journal · Volume ${issue.volume}`}
         title={issue.title}
@@ -58,7 +59,7 @@ export default async function IssuePage({ params }: Params) {
           <div className="relative aspect-3/4 overflow-hidden border border-rule bg-paper p-9 shadow-[0_24px_50px_-28px_rgba(23,23,23,0.3)]">
             <div className="flex h-full flex-col">
               <p className="font-display text-[1.0625rem] tracking-[0.1em] text-ink">
-                LASUSMA
+                LASUMSA
               </p>
               <div aria-hidden className="my-2.5 h-px w-full bg-gold" />
               <p className="text-[0.4375rem] font-medium tracking-[0.18em] text-ink-60 uppercase">
@@ -88,7 +89,7 @@ export default async function IssuePage({ params }: Params) {
               <p className="mt-2 font-display text-[1.5rem] leading-tight text-ink">
                 {issue.title}
               </p>
-              <p className="mt-3 font-display text-[1.125rem] leading-none text-gold">
+              <p className="mt-3 font-display text-[1.125rem] leading-none text-gold-ink">
                 Vol. {issue.volume} · {issue.year}
               </p>
             </div>
@@ -107,7 +108,7 @@ export default async function IssuePage({ params }: Params) {
             {sections.map((group, gi) => (
               <section key={group.section} className="mt-14 first:mt-0">
                 <div className="flex items-baseline gap-5 border-b border-rule-strong pb-4">
-                  <p className="text-[0.75rem] font-medium text-gold tabular-nums">
+                  <p className="text-[0.75rem] font-medium text-gold-ink tabular-nums">
                     {String(gi + 1).padStart(2, "0")}
                   </p>
                   <h3 className="text-[0.8125rem] font-medium tracking-[0.14em] text-ink uppercase">
@@ -233,6 +234,6 @@ export default async function IssuePage({ params }: Params) {
           }),
         }}
       />
-    </>
+    </PageTransition>
   );
 }

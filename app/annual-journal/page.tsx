@@ -2,18 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLink, PageHeader } from "@/components/editorial";
 import { getIssues } from "@/lib/content";
+import { PageTransition } from "@/components/page-transition";
 
 export const metadata: Metadata = {
   title: "Annual Journal",
   description:
-    "The annual journal of the LASUSMA Research & Journal Club: original research, reviews, case reports, commentaries and student perspectives.",
+    "The annual journal of the LASUMSA Research & Journal Club: original research, reviews, case reports, commentaries and student perspectives.",
 };
 
 export default async function AnnualJournalIndexPage() {
   const issues = await getIssues();
 
   return (
-    <>
+    <PageTransition>
       <PageHeader
         eyebrow="Annual journal"
         title="Collected volumes"
@@ -34,7 +35,7 @@ export default async function AnnualJournalIndexPage() {
                   className="group grid grid-cols-1 gap-x-8 gap-y-6 py-10 md:grid-cols-[10rem_1fr_auto] md:items-baseline md:py-14"
                 >
                   <div>
-                    <p className="font-display text-[1.75rem] leading-none text-gold">
+                    <p className="font-display text-[1.75rem] leading-none text-gold-ink">
                       Vol. {issue.volume}
                     </p>
                     <p className="eyebrow mt-3">{issue.year}</p>
@@ -57,7 +58,7 @@ export default async function AnnualJournalIndexPage() {
 
                   <p
                     aria-hidden
-                    className="flex items-center gap-2 text-[0.6875rem] font-medium tracking-[0.14em] text-accent uppercase opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 md:self-center"
+                    className="flex items-center gap-2 text-[0.6875rem] font-medium tracking-[0.14em] text-accent uppercase opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-x-1 group-hover:opacity-100 md:self-center"
                   >
                     Open
                     <span aria-hidden>→</span>
@@ -72,6 +73,6 @@ export default async function AnnualJournalIndexPage() {
           <ArrowLink href="/journal-club">See how each issue was developed</ArrowLink>
         </div>
       </section>
-    </>
+    </PageTransition>
   );
 }

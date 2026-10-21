@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLink } from "@/components/editorial";
+import { PageTransition } from "@/components/page-transition";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -9,7 +10,8 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="mx-auto max-w-[1200px] px-gutter py-32 md:py-48">
+    <PageTransition>
+      <div className="mx-auto max-w-[1200px] px-gutter py-32 md:py-48">
       <p className="eyebrow eyebrow-accent">Error 404</p>
       <h1 className="mt-6 max-w-[18ch] text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.03]">
         This page is not in the archive.
@@ -31,6 +33,7 @@ export default function NotFound() {
         </Link>
         .
       </p>
-    </div>
+      </div>
+    </PageTransition>
   );
 }

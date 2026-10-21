@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLink, PageHeader } from "@/components/editorial";
+import { PageTransition } from "@/components/page-transition";
 import {
   opportunities,
   presentations,
@@ -11,19 +12,19 @@ import {
 export const metadata: Metadata = {
   title: "Research",
   description:
-    "Research produced by members of the LASUSMA Research & Journal Club: ongoing projects, publications, conference presentations and opportunities to join.",
+    "Research produced by members of the LASUMSA Research & Journal Club: ongoing projects, publications, conference presentations and opportunities to join.",
 };
 
 const STATUS_TONE: Record<string, string> = {
   Ongoing: "border-accent text-accent",
   "In analysis": "border-rule-strong text-ink-60",
-  Completed: "border-gold text-gold",
+  Completed: "border-gold text-gold-ink",
   Recruiting: "border-accent text-accent",
 };
 
 export default function ResearchPage() {
   return (
-    <>
+    <PageTransition>
       <PageHeader
         eyebrow="Member research"
         title="Research"
@@ -55,7 +56,7 @@ export default function ResearchPage() {
             <li key={p.id} className="border-b border-rule">
               <details className="group">
                 <summary className="flex cursor-pointer list-none items-start gap-6 py-8 md:py-10 [&::-webkit-details-marker]:hidden">
-                  <span className="mt-1.5 shrink-0 text-[0.75rem] font-medium text-gold tabular-nums transition-transform duration-300 group-open:translate-x-1">
+                  <span className="mt-1.5 shrink-0 text-[0.75rem] font-medium text-gold-ink tabular-nums transition-transform duration-300 group-open:translate-x-1">
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
@@ -130,7 +131,7 @@ export default function ResearchPage() {
       </section>
 
       {/* ---- publications ---- */}
-      <section aria-labelledby="publications-heading" className="border-t border-rule bg-surface">
+      <section aria-labelledby="publications-heading" className="defer-paint border-t border-rule bg-surface">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <p className="eyebrow eyebrow-accent">Published</p>
           <h2
@@ -178,7 +179,7 @@ export default function ResearchPage() {
       </section>
 
       {/* ---- presentations ---- */}
-      <section aria-labelledby="presentations-heading" className="border-t border-rule">
+      <section aria-labelledby="presentations-heading" className="defer-paint border-t border-rule">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <p className="eyebrow eyebrow-accent">Presented</p>
           <h2
@@ -214,7 +215,7 @@ export default function ResearchPage() {
       </section>
 
       {/* ---- opportunities ---- */}
-      <section aria-labelledby="opportunities-heading" className="border-t border-rule bg-surface">
+      <section aria-labelledby="opportunities-heading" className="defer-paint border-t border-rule bg-surface">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <p className="eyebrow eyebrow-accent">Get involved</p>
           <h2
@@ -227,7 +228,7 @@ export default function ResearchPage() {
           <ol className="mt-14 grid gap-x-10 gap-y-14 sm:grid-cols-3">
             {opportunities.map((o, i) => (
               <li key={o.title} className="border-t border-rule pt-7">
-                <p className="text-[0.75rem] font-medium text-gold tabular-nums">
+                <p className="text-[0.75rem] font-medium text-gold-ink tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <h3 className="mt-5 text-[1.375rem] leading-[1.2]">{o.title}</h3>
@@ -249,6 +250,6 @@ export default function ResearchPage() {
           </div>
         </div>
       </section>
-    </>
+    </PageTransition>
   );
 }

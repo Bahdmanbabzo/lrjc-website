@@ -75,19 +75,27 @@ style. Use standard Markdown plus:
 | `##` | Major sections — *The study*, *What the authors found*, *Critical appraisal* |
 | `###` | Subsections within an appraisal — *Design*, *The missing comparator* |
 | `> ` | Pull quote or a key definition |
-| Figure | See `components/mdx.tsx` for the `figure` component |
+| `<Figure>` | See `components/mdx.tsx` for the figure component |
 
 `figure` is available in the body:
 
 ```mdx
 <Figure
-  src="/figures/roc-curve.png"
+  src="/figures/roc-curve-2048.png"
+  avifSrcSet="/figures/roc-curve-1024.avif 1024w, /figures/roc-curve-2048.avif 2048w"
+  webpSrcSet="/figures/roc-curve-1024.webp 1024w, /figures/roc-curve-2048.webp 2048w"
+  sizes="(max-width: 768px) 100vw, 68ch"
+  width={2048}
+  height={678}
   caption="Figure 3. Area under the ROC curve for the primary outcome."
   credit="Reproduced from Gulshan et al., JAMA 2016"
 />
 ```
 
-The component name is `figure` (lowercase, as MDX resolves custom elements).
+Prefer WebP/AVIF sources with a compressed fallback, and always set `width`
+and `height` so the figure does not shift the page while it loads.
+
+Use the capitalised `<Figure>` component. MDX treats lowercase JSX tags as plain HTML, so the figure would render unmapped.
 
 ## House style
 
@@ -140,5 +148,5 @@ Sample content that must be replaced:
 - [ ] `lib/research.ts` — placeholder projects, publications, presentations
 - [ ] Team names and roles in `app/about/page.tsx` (marked in-page)
 - [ ] `site.name`, `site.contact`, `site.url` in `lib/site.ts`
-- [ ] Confirm the expansion of **LASUSMA** — currently assumed to be
+- [ ] Confirm the expansion of **LASUMSA** — currently assumed to be
       "Lagos State University Medical Students' Association"

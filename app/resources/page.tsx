@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowLink, PageHeader } from "@/components/editorial";
 import { getPublishedArticles } from "@/lib/content";
+import { PageTransition } from "@/components/page-transition";
 
 export const metadata: Metadata = {
   title: "Resources",
@@ -125,7 +126,7 @@ export default async function ResourcesPage() {
   const articles = await getPublishedArticles();
 
   return (
-    <>
+    <PageTransition>
       <PageHeader
         eyebrow="Open resources"
         title="Resources"
@@ -168,7 +169,7 @@ export default async function ResourcesPage() {
       </section>
 
       {/* ---- literature search ---- */}
-      <section aria-labelledby="search-heading" className="border-t border-rule bg-surface">
+      <section aria-labelledby="search-heading" className="defer-paint border-t border-rule bg-surface">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <div>
@@ -200,7 +201,7 @@ export default async function ResourcesPage() {
       </section>
 
       {/* ---- software ---- */}
-      <section aria-labelledby="software-heading" className="border-t border-rule">
+      <section aria-labelledby="software-heading" className="defer-paint border-t border-rule">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <div>
@@ -232,7 +233,7 @@ export default async function ResourcesPage() {
       </section>
 
       {/* ---- statistics notes ---- */}
-      <section aria-labelledby="stats-heading" className="border-t border-rule bg-surface">
+      <section aria-labelledby="stats-heading" className="defer-paint border-t border-rule bg-surface">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <div>
@@ -247,7 +248,7 @@ export default async function ResourcesPage() {
                   key={s}
                   className="grid grid-cols-[2.5rem_1fr] gap-5 border-t border-rule py-6"
                 >
-                  <span className="text-[0.75rem] font-medium text-gold tabular-nums">
+                  <span className="text-[0.75rem] font-medium text-gold-ink tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <p className="text-[0.9375rem] leading-relaxed text-ink-60">{s}</p>
@@ -259,7 +260,7 @@ export default async function ResourcesPage() {
       </section>
 
       {/* ---- club resources ---- */}
-      <section aria-labelledby="club-heading" className="border-t border-rule">
+      <section aria-labelledby="club-heading" className="defer-paint border-t border-rule">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <div>
@@ -316,6 +317,6 @@ export default async function ResourcesPage() {
           </div>
         </div>
       </section>
-    </>
+    </PageTransition>
   );
 }

@@ -41,6 +41,11 @@ export const figureSchema = z.object({
   src: z.string().min(1),
   caption: z.string().min(1),
   credit: z.string().optional(),
+  width: z.coerce.number().int().positive().optional(),
+  height: z.coerce.number().int().positive().optional(),
+  sizes: z.string().optional(),
+  avifSrcSet: z.string().optional(),
+  webpSrcSet: z.string().optional(),
 });
 
 export const referenceSchema = z.object({

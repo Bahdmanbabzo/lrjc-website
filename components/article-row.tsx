@@ -51,7 +51,7 @@ export function ArticleRow({
                 <span>
                   {article.contributors.length > 0
                     ? article.contributors.join(", ")
-                    : "LASUSMA Research & Journal Club"}
+                    : "LASUMSA Research & Journal Club"}
                 </span>
                 <span className="text-ink-40"> · {article.discipline}</span>
               </>
@@ -61,7 +61,7 @@ export function ArticleRow({
 
         <p
           aria-hidden
-          className="flex items-center gap-2 text-[0.6875rem] font-medium tracking-[0.14em] text-accent uppercase opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100 sm:self-center"
+          className="flex items-center gap-2 text-[0.6875rem] font-medium tracking-[0.14em] text-accent uppercase opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-x-1 group-hover:opacity-100 sm:self-center"
         >
           Read
           <span aria-hidden>→</span>

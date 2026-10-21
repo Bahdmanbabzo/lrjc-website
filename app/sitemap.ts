@@ -1,5 +1,9 @@
 import type { MetadataRoute } from "next";
-import { getIssues, getPublishedArticles } from "@/lib/content";
+import {
+  getArticleYears,
+  getIssues,
+  getPublishedArticles,
+} from "@/lib/content";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -17,7 +21,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${site.url}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
   ];
 
-  const articles = await getPublishedArticles();
+  const [articles, years] = await Promise.all([
+    getPublishedArticles(),
+    getArticleYears(),
+  ]);
+
+  const yearRoutes: MetadataRoute.Sitemap = years.map((year) => ({
+    url: `${site.url}/journal-club/year/${year}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
   const articleRoutes: MetadataRoute.Sitemap = articles.map((a) => ({
     url: `${site.url}/journal-club/${a.slug}`,
     lastModified: new Date(a.date),
@@ -33,5 +48,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...issueRoutes, ...articleRoutes];
+  return [...staticRoutes, ...yearRoutes, ...issueRoutes, ...articleRoutes];
 }

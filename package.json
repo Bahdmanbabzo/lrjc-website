@@ -2,7 +2,7 @@
   "name": "lrjc-website",
   "version": "1.0.0",
   "private": true,
-  "description": "LASUSMA Research & Journal Club — publication platform",
+  "description": "LASUMSA Research & Journal Club — publication platform",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

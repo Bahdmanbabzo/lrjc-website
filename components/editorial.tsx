@@ -44,7 +44,7 @@ export function ArrowLink({
       <span className="link-underline">{children}</span>
       <span
         aria-hidden
-        className="block h-px w-8 transition-all duration-300 group-hover:w-12 group-hover:bg-accent"
+        className="block h-px w-8 origin-left transition-transform duration-300 group-hover:scale-x-150 group-hover:bg-accent"
         style={{ backgroundColor: "currentColor", opacity: 0.45 }}
       />
     </Link>
@@ -66,12 +66,12 @@ export function PageHeader({
   return (
     <header className="border-b border-rule">
       <div className="mx-auto max-w-[1200px] px-gutter pt-20 pb-16 md:pt-32 md:pb-20">
-        <p className="eyebrow eyebrow-accent rise-in">{eyebrow}</p>
-        <h1 className="mt-6 max-w-[16ch] text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.02] rise-in [animation-delay:60ms]">
+        <p className="eyebrow eyebrow-accent">{eyebrow}</p>
+        <h1 className="mt-6 max-w-[16ch] text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.02]">
           {title}
         </h1>
         {lede && (
-          <p className="mt-8 max-w-[58ch] text-[1.0625rem] leading-relaxed text-ink-60 rise-in [animation-delay:120ms]">
+          <p className="mt-8 max-w-[58ch] text-[1.0625rem] leading-relaxed text-ink-60">
             {lede}
           </p>
         )}

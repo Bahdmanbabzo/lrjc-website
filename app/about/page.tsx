@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/editorial";
 import { journalProcess, site } from "@/lib/site";
+import { PageTransition } from "@/components/page-transition";
 
 export const metadata: Metadata = {
   title: "About",
@@ -79,11 +80,11 @@ const milestones = [
 
 export default function AboutPage() {
   return (
-    <>
+    <PageTransition>
       <PageHeader
         eyebrow="About the club"
         title="A student community built around evidence."
-        lede="The LASUSMA Research & Journal Club is a student-led body at Lagos State University College of Medicine. We meet monthly to appraise the medical literature, we run our own research projects, and we publish both."
+        lede="The LASUMSA Research & Journal Club is a student-led body at Lagos State University College of Medicine. We meet monthly to appraise the medical literature, we run our own research projects, and we publish both."
       />
 
       {/* ---- mission ---- */}
@@ -113,7 +114,7 @@ export default function AboutPage() {
       </section>
 
       {/* ---- process ---- */}
-      <section aria-labelledby="process-heading" className="border-t border-rule bg-surface">
+      <section aria-labelledby="process-heading" className="defer-paint border-t border-rule bg-surface">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="max-w-2xl">
             <p className="eyebrow eyebrow-accent">How the journal club works</p>
@@ -129,7 +130,7 @@ export default function AboutPage() {
             {journalProcess.map((step) => (
               <li key={step.number}>
                 <div className="flex items-baseline gap-3">
-                  <p className="text-[0.75rem] font-medium text-gold tabular-nums">
+                  <p className="text-[0.75rem] font-medium text-gold-ink tabular-nums">
                     {step.number}
                   </p>
                   <span aria-hidden className="h-px flex-1 bg-rule" />
@@ -147,7 +148,7 @@ export default function AboutPage() {
       </section>
 
       {/* ---- values ---- */}
-      <section aria-labelledby="values-heading" className="border-t border-rule">
+      <section aria-labelledby="values-heading" className="defer-paint border-t border-rule">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <p className="eyebrow eyebrow-accent">How we work</p>
           <h2
@@ -170,7 +171,7 @@ export default function AboutPage() {
       </section>
 
       {/* ---- team ---- */}
-      <section aria-labelledby="team-heading" className="border-t border-rule bg-surface">
+      <section aria-labelledby="team-heading" className="defer-paint border-t border-rule bg-surface">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <p className="eyebrow eyebrow-accent">The club</p>
           <h2
@@ -204,7 +205,7 @@ export default function AboutPage() {
       </section>
 
       {/* ---- history ---- */}
-      <section aria-labelledby="history-heading" className="border-t border-rule">
+      <section aria-labelledby="history-heading" className="defer-paint border-t border-rule">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <h2
@@ -216,7 +217,7 @@ export default function AboutPage() {
             <ol className="max-w-[58ch] list-none">
               {milestones.map((m) => (
                 <li key={m.text} className="grid grid-cols-[4rem_1fr] gap-6 border-t border-rule py-7">
-                  <p className="text-[0.875rem] font-medium text-gold tabular-nums">
+                  <p className="text-[0.875rem] font-medium text-gold-ink tabular-nums">
                     {m.year}
                   </p>
                   <p className="text-[0.9375rem] leading-relaxed text-ink-60">
@@ -228,6 +229,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </>
+    </PageTransition>
   );
 }

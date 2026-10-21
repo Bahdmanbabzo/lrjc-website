@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   LASUSMA Research & Journal Club — design tokens
+   LASUMSA Research & Journal Club — design tokens
    Editorial / academic-publication system. Single light theme.
    ------------------------------------------------------------------ */
 
@@ -20,13 +20,15 @@
   --color-rule-strong: #d6d1c4;
 
   /* Institutional accent — the shadowed facade */
-  --color-accent: #0c365a;
-  --color-accent-hover: #082740;
-  --color-accent-05: #eaf0f5;
+  --color-accent: #153c59;
+  --color-accent-hover: #0e2c42;
+  --color-accent-05: #e9eff3;
 
-  /* Highlight — used sparingly (the light itself) */
-  --color-gold: #9a6510;
-  --color-gold-40: #ecd9ae;
+  /* Highlight — used sparingly (the light itself).
+     `gold` is decorative/fill only; `gold-ink` is the text-safe value. */
+  --color-gold: #f5b41a;
+  --color-gold-ink: #7a5200;
+  --color-gold-40: #fbe6ad;
 
   /* Typography */
   --font-display: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
@@ -35,6 +37,10 @@
 
   /* Motion */
   --ease-editorial: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --duration-page-exit: 220ms;
+  --duration-page-enter: 460ms;
+  --ease-page-out: cubic-bezier(0.4, 0, 1, 1);
+  --ease-page-in: cubic-bezier(0.22, 0.61, 0.36, 1);
 
   /* Rhythm */
   --spacing-gutter: 1.5rem;
@@ -84,7 +90,7 @@
   }
 
   ::selection {
-    background-color: var(--color-accent-05);
+    background-color: var(--color-gold);
     color: var(--color-accent);
   }
 
@@ -192,7 +198,7 @@
   .prose-editorial a {
     color: var(--color-accent);
     text-decoration: underline;
-    text-decoration-color: var(--color-gold-40);
+    text-decoration-color: var(--color-gold);
     text-underline-offset: 3px;
     transition: text-decoration-color 200ms var(--ease-editorial);
   }
@@ -316,36 +322,105 @@
   }
 }
 
-/* ------------------------------------------------------------------
-   Motion — zero JavaScript.
+/* Skip rendering cost for sections below the fold until they approach
+   the viewport. The intrinsic size keeps the scrollbar stable. */
+@utility defer-paint {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 36rem;
+}
 
-   1. Entrance: a single keyframe animation on above-the-fold elements.
-   2. Scroll reveals: native CSS scroll-driven timelines, guarded by
-      @supports so browsers without support simply show no animation.
+/* ------------------------------------------------------------------
+   Page transitions — zero JavaScript.
+
+   React's <ViewTransition> (Next 16) activates the browser View
+   Transitions API on route changes. The old page exits quickly; the
+   new page is revealed with a clip-path wipe. Browsers without View
+   Transitions get the `.page-shell` entrance fallback below.
    ------------------------------------------------------------------ */
 
-@keyframes rise {
+::view-transition {
+  pointer-events: none;
+}
+
+/* forward: old shrinks left, new grows in from the right */
+@keyframes page-out-forward {
   from {
-    opacity: 0;
-    transform: translateY(12px);
+    clip-path: inset(0);
+    opacity: 1;
   }
   to {
-    opacity: 1;
-    transform: none;
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.85;
   }
 }
 
-@utility rise-in {
-  animation: rise 620ms var(--ease-editorial) both;
+@keyframes page-in-forward {
+  from {
+    clip-path: inset(0 0 0 100%);
+    opacity: 0.9;
+  }
+  to {
+    clip-path: inset(0);
+    opacity: 1;
+  }
 }
 
-@supports (animation-timeline: view()) {
+/* back: mirrored */
+@keyframes page-out-back {
+  from {
+    clip-path: inset(0);
+    opacity: 1;
+  }
+  to {
+    clip-path: inset(0 0 0 100%);
+    opacity: 0.85;
+  }
+}
+
+@keyframes page-in-back {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.9;
+  }
+  to {
+    clip-path: inset(0);
+    opacity: 1;
+  }
+}
+
+::view-transition-old(.page-forward) {
+  animation: page-out-forward var(--duration-page-exit) var(--ease-page-out)
+    both;
+}
+
+::view-transition-new(.page-forward) {
+  animation: page-in-forward var(--duration-page-enter) var(--ease-page-in)
+    both;
+}
+
+::view-transition-old(.page-back) {
+  animation: page-out-back var(--duration-page-exit) var(--ease-page-out) both;
+}
+
+::view-transition-new(.page-back) {
+  animation: page-in-back var(--duration-page-enter) var(--ease-page-in) both;
+}
+
+/* Fallback for browsers without View Transitions. */
+@supports not (view-transition-name: none) {
   @media (prefers-reduced-motion: no-preference) {
-    .reveal {
-      animation: rise linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 42%;
+    .page-shell {
+      animation: page-fallback 420ms var(--ease-page-in) both;
     }
+  }
+}
+
+@keyframes page-fallback {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0);
   }
 }
 
@@ -360,6 +435,13 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
   }
 }
 

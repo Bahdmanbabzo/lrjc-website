@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLink } from "@/components/editorial";
 import { HeroFigure } from "@/components/hero-figure";
-import { getArticlesByYear, getArticleYears, getIssues, getLatestArticle } from "@/lib/content";
+import { PageTransition } from "@/components/page-transition";
+import { getArticleYears, getIssues, getPublishedArticles } from "@/lib/content";
 import { pillars, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -10,46 +11,45 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [latest, years, issues] = await Promise.all([
-    getLatestArticle(),
+  const [articles, years, issues] = await Promise.all([
+    getPublishedArticles(),
     getArticleYears(),
     getIssues(),
   ]);
 
-  const allArticles = (await Promise.all(years.map((y) => getArticlesByYear(y))))
-    .flat()
-    .slice(0, 3);
+  const latest = articles[0] ?? null;
+  const allArticles = articles.slice(0, 3);
 
   const issue = issues[0];
   const stats = [
     { value: String(years.length || 1), label: "Years of reviews" },
-    { value: String(allArticles.length), label: "Published reviews" },
+    { value: String(articles.length), label: "Published reviews" },
     { value: String(issues.length || 1), label: "Annual volume" },
     { value: "12", label: "Sessions per year" },
   ];
 
   return (
-    <>
+    <PageTransition>
       {/* ---------------- hero ---------------- */}
       <section className="relative overflow-hidden">
         <HeroFigure className="pointer-events-none absolute top-1/2 right-[-18%] w-[min(760px,105vw)] -translate-y-1/2 text-accent opacity-[0.55] select-none max-lg:right-[-40%] max-lg:top-24 max-lg:w-[560px] max-lg:translate-y-0 max-lg:opacity-30" />
 
         <div className="relative mx-auto max-w-[1200px] px-gutter pt-24 pb-20 md:pt-40 md:pb-32">
-          <p className="eyebrow eyebrow-accent rise-in">
+          <p className="eyebrow eyebrow-accent">
             Lagos State University College of Medicine
           </p>
 
-          <h1 className="mt-8 max-w-[15ch] text-[clamp(2.75rem,7.5vw,5.5rem)] leading-[0.98] rise-in [animation-delay:80ms]">
+          <h1 className="mt-8 max-w-[15ch] text-[clamp(2.75rem,7.5vw,5.5rem)] leading-[0.98]">
             Building a culture of{" "}
             <span className="text-accent">evidence</span>, inquiry &amp; research.
           </h1>
 
-          <p className="mt-9 max-w-[52ch] text-[1.0625rem] leading-relaxed text-ink-60 rise-in [animation-delay:160ms]">
+          <p className="mt-9 max-w-[52ch] text-[1.0625rem] leading-relaxed text-ink-60">
             A student-led platform for critical appraisal, scientific discussion,
             research development and scholarly communication.
           </p>
 
-          <div className="mt-12 flex flex-wrap items-center gap-x-9 gap-y-5 rise-in [animation-delay:240ms]">
+          <div className="mt-12 flex flex-wrap items-center gap-x-9 gap-y-5">
             <ArrowLink href="/journal-club">Explore the journal club</ArrowLink>
             <ArrowLink href="/about" tone="ink">
               About us
@@ -94,7 +94,7 @@ export default async function HomePage() {
                       <span>
                         {latest.contributors.length > 0
                           ? latest.contributors.join(", ")
-                          : "LASUSMA Research & Journal Club"}
+                          : "LASUMSA Research & Journal Club"}
                       </span>
                       <span className="text-ink-40"> · {latest.discipline}</span>
                     </>
@@ -114,7 +114,10 @@ export default async function HomePage() {
               {/* Large numeral instead of an image — the brief asked for
                   typographic hierarchy over stock photography. */}
               <div className="hidden lg:block">
-                <p className="text-right font-display text-[7rem] leading-none text-gold-40 tabular-nums">
+                <p
+                  aria-hidden
+                  className="text-right font-display text-[7rem] leading-none text-gold-40 tabular-nums"
+                >
                   {String(new Date(latest.date).getMonth() + 1).padStart(2, "0")}
                 </p>
                 <p className="eyebrow mt-4 text-right">
@@ -127,7 +130,7 @@ export default async function HomePage() {
       )}
 
       {/* ---------------- what we do ---------------- */}
-      <section aria-labelledby="pillars-heading" className="border-t border-rule">
+      <section aria-labelledby="pillars-heading" className="defer-paint border-t border-rule">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="max-w-2xl">
             <p className="eyebrow eyebrow-accent" id="pillars-heading">
@@ -141,7 +144,7 @@ export default async function HomePage() {
           <ol className="mt-16 grid gap-x-10 gap-y-14 sm:grid-cols-2">
             {pillars.map((p) => (
               <li key={p.number} className="border-t border-rule pt-7">
-                <p className="text-[0.75rem] font-medium text-gold tabular-nums">
+                <p className="text-[0.75rem] font-medium text-gold-ink tabular-nums">
                   {p.number}
                 </p>
                 <h3 className="mt-5 text-[1.625rem] leading-[1.15]">{p.title}</h3>
@@ -155,7 +158,7 @@ export default async function HomePage() {
       </section>
 
       {/* ---------------- archive table ---------------- */}
-      <section aria-labelledby="archive-heading" className="border-t border-rule">
+      <section aria-labelledby="archive-heading" className="defer-paint border-t border-rule">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
@@ -206,7 +209,7 @@ export default async function HomePage() {
 
       {/* ---------------- annual journal ---------------- */}
       {issue && (
-        <section aria-labelledby="journal-heading" className="border-t border-rule bg-surface">
+        <section aria-labelledby="journal-heading" className="defer-paint border-t border-rule bg-surface">
           <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
             <div className="grid gap-14 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-20">
               <div>
@@ -236,7 +239,7 @@ export default async function HomePage() {
                   <div className="relative aspect-3/4 overflow-hidden border border-rule bg-paper p-7 shadow-[0_18px_40px_-24px_rgba(23,23,23,0.28)] transition-transform duration-300 group-hover:-translate-y-1">
                     <div className="flex h-full flex-col">
                       <p className="font-display text-[0.9375rem] tracking-[0.1em] text-ink">
-                        LASUSMA
+                        LASUMSA
                       </p>
                       <div aria-hidden className="my-2 h-px w-full bg-gold" />
                       <p className="text-[0.4375rem] font-medium tracking-[0.18em] text-ink-60 uppercase">
@@ -250,7 +253,7 @@ export default async function HomePage() {
                       <p className="text-[0.5625rem] font-medium tracking-[0.16em] text-accent uppercase">
                         Annual Journal
                       </p>
-                      <p className="mt-1.5 font-display text-[1.375rem] leading-none text-gold">
+                      <p className="mt-1.5 font-display text-[1.375rem] leading-none text-gold-ink">
                         Vol. {issue.issue.volume} · {issue.issue.year}
                       </p>
                     </div>
@@ -263,7 +266,7 @@ export default async function HomePage() {
       )}
 
       {/* ---------------- stats ---------------- */}
-      <section aria-label="Club in numbers" className="border-t border-rule">
+      <section aria-label="Club in numbers" className="defer-paint border-t border-rule">
         <div className="mx-auto max-w-[1200px] px-gutter py-16 md:py-20">
           <dl className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-4">
             {stats.map((s) => (
@@ -277,6 +280,6 @@ export default async function HomePage() {
           </dl>
         </div>
       </section>
-    </>
+    </PageTransition>
   );
 }

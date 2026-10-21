@@ -54,7 +54,7 @@ export function MobileNav() {
                     onClick={() => setOpen(false)}
                     className="flex items-baseline gap-4 py-5 font-display text-3xl tracking-[-0.02em] text-ink"
                   >
-                    <span className="text-[0.6875rem] font-sans font-medium text-gold tabular-nums">
+                    <span className="text-[0.6875rem] font-sans font-medium text-gold-ink tabular-nums">
                       0{i + 1}
                     </span>
                     {item.label}
@@ -67,7 +67,7 @@ export function MobileNav() {
                   onClick={() => setOpen(false)}
                   className="flex items-baseline gap-4 py-5 font-display text-3xl tracking-[-0.02em] text-accent"
                 >
-                  <span className="text-[0.6875rem] font-sans font-medium text-gold tabular-nums">
+                  <span className="text-[0.6875rem] font-sans font-medium text-gold-ink tabular-nums">
                     0{nav.length + 1}
                   </span>
                   Contact

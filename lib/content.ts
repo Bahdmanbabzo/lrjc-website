@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { cache } from "react";
 import type { ZodType } from "zod";
 import {
   articleFileSchema,
@@ -80,18 +81,18 @@ export function getAllArticles(): Promise<ArticleFile[]> {
 }
 
 /** Published articles only, newest first — what the site renders. */
-export async function getPublishedArticles(): Promise<Article[]> {
+export const getPublishedArticles = cache(async (): Promise<Article[]> => {
   const all = await getAllArticles();
   return all
     .filter((a) => a.data.status === "published")
     .sort((a, b) => b.data.date.localeCompare(a.data.date))
     .map((a) => a.data);
-}
+});
 
-export async function getArticle(slug: string): Promise<ArticleFile | null> {
+export const getArticle = cache(async (slug: string): Promise<ArticleFile | null> => {
   const all = await getAllArticles();
   return all.find((a) => a.data.slug === slug) ?? null;
-}
+});
 
 export async function getArticleSlugs(): Promise<string[]> {
   const all = await getPublishedArticles();
@@ -105,17 +106,19 @@ export async function getLatestArticle(): Promise<Article | null> {
 }
 
 /** Descending list of years that have at least one published article. */
-export async function getArticleYears(): Promise<number[]> {
+export const getArticleYears = cache(async (): Promise<number[]> => {
   const all = await getPublishedArticles();
   return [...new Set(all.map((a) => new Date(a.date).getFullYear()))].sort(
     (a, b) => b - a,
   );
-}
+});
 
-export async function getArticlesByYear(year: number): Promise<Article[]> {
-  const all = await getPublishedArticles();
-  return all.filter((a) => new Date(a.date).getFullYear() === year);
-}
+export const getArticlesByYear = cache(
+  async (year: number): Promise<Article[]> => {
+    const all = await getPublishedArticles();
+    return all.filter((a) => new Date(a.date).getFullYear() === year);
+  },
+);
 
 /* ------------------------------------------------------------------ */
 /* Annual journal                                                      */
@@ -138,12 +141,10 @@ export async function getIssues(): Promise<IssueWithEntries[]> {
     return [];
   }
 
-  const out: IssueWithEntries[] = [];
-  for (const year of years) {
-    const issue = await getIssue(year);
-    if (issue) out.push(issue);
-  }
-  return out;
+  const issues = await Promise.all(years.map((year) => getIssue(year)));
+  return issues.filter(
+    (issue): issue is IssueWithEntries => issue !== null,
+  );
 }
 
 export async function getIssue(year: string): Promise<IssueWithEntries | null> {
@@ -160,19 +161,20 @@ export async function getIssue(year: string): Promise<IssueWithEntries | null> {
     issueFileSchema,
   );
 
-  const entries: Entry[] = [];
-  for (const name of issue.entries) {
-    const entryPath = path.join(dir, "entries", `${name}.mdx`);
-    try {
-      await fs.access(entryPath);
-    } catch {
-      throw new Error(
-        `Issue ${year} lists entry "${name}" but content/journal/${year}/entries/${name}.mdx does not exist.`,
-      );
-    }
-    const { data } = await readAndValidate(entryPath, entryFileSchema);
-    entries.push(data);
-  }
+  const entries = await Promise.all(
+    issue.entries.map(async (name) => {
+      const entryPath = path.join(dir, "entries", `${name}.mdx`);
+      try {
+        await fs.access(entryPath);
+      } catch {
+        throw new Error(
+          `Issue ${year} lists entry "${name}" but content/journal/${year}/entries/${name}.mdx does not exist.`,
+        );
+      }
+      const { data } = await readAndValidate(entryPath, entryFileSchema);
+      return data;
+    }),
+  );
 
   return { issue: { ...issue, editorialBody }, entries };
 }

@@ -1,6 +1,6 @@
-# LASUSMA Research &amp; Journal Club
+# LASUMSA Research &amp; Journal Club
 
-Publication platform for the LASUSMA Research &amp; Journal Club, Lagos State
+Publication platform for the LASUMSA Research &amp; Journal Club, Lagos State
 University College of Medicine.
 
 Built as a scholarly archive rather than a student-association site. Content
@@ -58,26 +58,32 @@ listed, so a broken article can never ship.
 | Surface | `#FFFFFF` |
 | Ink | `#1A1A17` / `#6B6A61` |
 | Rules | `#E7E3D8` |
-| Accent | `#0C365A` deep navy |
-| Accent wash | `#EAF0F5` |
-| Highlight | `#9A6510` amber |
+| Accent | `#153C59` deep navy |
+| Accent hover | `#0E2C42` |
+| Accent wash | `#E9EFF3` |
+| Highlight | `#F5B41A` amber (decorative/fill only) |
+| Highlight ink | `#7A5200` (text-safe amber) |
+| Highlight tint | `#FBE6AD` |
 
 Rules that hold throughout:
 
 - Borders are hairlines, never shadows — the journal cover is the only exception.
 - Navy marks interactive and active states. It is never a large fill.
+- Bright gold is decorative: rules, markers, underlines and selection fills. Small
+  gold text uses `--color-gold-ink`, because `#F5B41A` on cream is only 1.78:1.
 - Gold appears roughly once per viewport at most.
 - Whitespace does the work; section padding is `py-20 md:py-28`.
-- Motion is 150–250ms on transform and opacity only.
+- Hover/state motion is 150–300ms on transform, opacity and colour. Route
+  transitions are 220ms out / 460ms in with a clip-path wipe.
 
 There is no dark mode and no `dark:` variant anywhere.
 
 ## JavaScript
 
-The site is server-rendered throughout. Motion is CSS only — a keyframe
-entrance, plus scroll-driven reveals using `animation-timeline: view()` behind
-an `@supports` guard, so browsers without it simply show no animation. Both are
-disabled under `prefers-reduced-motion: reduce`.
+The site is server-rendered throughout. Route changes use React's
+`<ViewTransition>` with CSS clip-path wipes; browsers without the View
+Transitions API get a CSS-only entrance fallback. All motion is disabled under
+`prefers-reduced-motion: reduce`.
 
 **Measured payload: ~174 KB gzipped of JavaScript per page**, of which ~170 KB
 is the Next.js App Router React runtime that the framework ships
@@ -96,7 +102,8 @@ outputs static HTML and ships no runtime; that was considered and declined.
 app/
   page.tsx                     home
   journal-club/
-    page.tsx                   archive (+ ?year= filter)
+    page.tsx                   full archive
+    year/[year]/               per-year archive (static)
     [slug]/                    article — the main template
   annual-journal/
     page.tsx                   all volumes

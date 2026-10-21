@@ -2,8 +2,9 @@ import { ImageResponse } from "next/og";
 
 import { getArticle, getArticleSlugs } from "@/lib/content";
 import { site } from "@/lib/site";
+import { palette } from "@/lib/theme";
 
-export const alt = "LASUSMA R&JC article";
+export const alt = "LASUMSA R&JC article";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -35,7 +36,7 @@ export default async function ArticleOpengraphImage({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          backgroundColor: "#fefbf4",
+          backgroundColor: palette.paper,
           padding: "72px 80px",
           position: "relative",
         }}
@@ -47,14 +48,14 @@ export default async function ArticleOpengraphImage({
             left: 0,
             right: 0,
             height: 10,
-            backgroundColor: "#0c365a",
+            backgroundColor: palette.accent,
             display: "flex",
           }}
         />
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
-            style={{ display: "flex", fontSize: 24, letterSpacing: 5, color: "#0c365a" }}
+            style={{ display: "flex", fontSize: 24, letterSpacing: 5, color: palette.accent }}
           >
             {meta}
           </div>
@@ -67,7 +68,7 @@ export default async function ArticleOpengraphImage({
               fontSize: 58,
               lineHeight: 1.08,
               letterSpacing: -1.5,
-              color: "#1a1a17",
+              color: palette.ink,
               maxWidth: 1000,
             }}
           >
@@ -80,14 +81,14 @@ export default async function ArticleOpengraphImage({
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            borderTop: "2px solid #e7e3d8",
+            borderTop: `2px solid ${palette.rule}`,
             paddingTop: 26,
           }}
         >
-          <div style={{ display: "flex", fontSize: 22, letterSpacing: 4, color: "#1a1a17" }}>
-            LASUSMA R&amp;JC
+          <div style={{ display: "flex", fontSize: 22, letterSpacing: 4, color: palette.ink }}>
+            LASUMSA R&amp;JC
           </div>
-          <div style={{ display: "flex", fontSize: 20, letterSpacing: 3, color: "#8b897e" }}>
+          <div style={{ display: "flex", fontSize: 20, letterSpacing: 3, color: palette.ink40 }}>
             {genre}
           </div>
         </div>

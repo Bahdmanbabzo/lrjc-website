@@ -11,7 +11,7 @@ import { nav } from "@/lib/site";
  */
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-rule bg-paper/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-rule bg-paper/95">
       <div className="mx-auto flex h-(--header-h) max-w-[1200px] items-center justify-between px-gutter">
         <WordmarkLink />
 

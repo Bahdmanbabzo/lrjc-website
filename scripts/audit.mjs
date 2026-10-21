@@ -6,7 +6,7 @@ const ROUTES = [
   "/",
   "/about",
   "/journal-club",
-  "/journal-club/2026-09-deep-learning-screening-diabetic-retinopathy",
+  "/journal-club/2026-10-ward-rounds-on-tiktok",
   "/annual-journal",
   "/annual-journal/2026",
   "/research",

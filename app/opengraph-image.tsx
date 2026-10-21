@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
 import { site } from "@/lib/site";
+import { palette } from "@/lib/theme";
 
 export const alt = site.name;
 export const size = { width: 1200, height: 630 };
@@ -20,7 +21,7 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          backgroundColor: "#fefbf4",
+          backgroundColor: palette.paper,
           padding: "72px 80px",
           position: "relative",
         }}
@@ -33,7 +34,7 @@ export default function OpengraphImage() {
             left: 0,
             right: 0,
             height: 10,
-            backgroundColor: "#0c365a",
+            backgroundColor: palette.accent,
             display: "flex",
           }}
         />
@@ -44,16 +45,16 @@ export default function OpengraphImage() {
               display: "flex",
               fontSize: 34,
               letterSpacing: 7,
-              color: "#1a1a17",
+              color: palette.ink,
             }}
           >
-            LASUSMA
+            LASUMSA
           </div>
           <div
             style={{
               height: 2,
               width: 120,
-              backgroundColor: "#9a6510",
+              backgroundColor: palette.gold,
               margin: "18px 0",
               display: "flex",
             }}
@@ -63,7 +64,7 @@ export default function OpengraphImage() {
               display: "flex",
               fontSize: 17,
               letterSpacing: 5,
-              color: "#6b6a61",
+              color: palette.ink60,
               textTransform: "uppercase",
             }}
           >
@@ -78,7 +79,7 @@ export default function OpengraphImage() {
               fontSize: 68,
               lineHeight: 1.05,
               letterSpacing: -2,
-              color: "#1a1a17",
+              color: palette.ink,
               maxWidth: 900,
             }}
           >
@@ -88,7 +89,7 @@ export default function OpengraphImage() {
             style={{
               display: "flex",
               fontSize: 26,
-              color: "#0c365a",
+              color: palette.accent,
               marginTop: 28,
             }}
           >

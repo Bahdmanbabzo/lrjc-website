@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Mdx } from "@/components/mdx";
+import { PageTransition } from "@/components/page-transition";
 import { getArticle, getArticleSlugs, getPublishedArticles } from "@/lib/content";
 import type { Article } from "@/content/schema";
 import { site } from "@/lib/site";
@@ -47,7 +48,8 @@ export default async function ArticlePage({ params }: Params) {
   const older = index < all.length - 1 ? all[index + 1] : null;
 
   return (
-    <article>
+    <PageTransition>
+      <article>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd(a)) }}
@@ -56,21 +58,22 @@ export default async function ArticlePage({ params }: Params) {
       {/* ---- masthead ---- */}
       <header className="border-b border-rule">
         <div className="mx-auto max-w-[1200px] px-gutter pt-14 pb-14 md:pt-24 md:pb-20">
-          <nav aria-label="Breadcrumb" className="rise-in">
+          <nav aria-label="Breadcrumb">
             <Link
               href="/journal-club"
+              transitionTypes={["nav-back"]}
               className="eyebrow link-underline hover:text-ink"
             >
               Journal Club
             </Link>
           </nav>
 
-          <p className="eyebrow eyebrow-accent mt-10 rise-in [animation-delay:40ms]">
+          <p className="eyebrow eyebrow-accent mt-10">
             {a.displayDate}
             <span className="text-ink-40"> · {a.discipline}</span>
           </p>
 
-          <h1 className="mt-6 max-w-[20ch] text-[clamp(2.125rem,5.5vw,4rem)] leading-[1.04] rise-in [animation-delay:80ms]">
+          <h1 className="mt-6 max-w-[20ch] text-[clamp(2.125rem,5.5vw,4rem)] leading-[1.04]">
             {a.title}
           </h1>
 
@@ -239,7 +242,7 @@ export default async function ArticlePage({ params }: Params) {
                 <ol className="mt-4 flex flex-col gap-4">
                   {a.takeaways.map((t, i) => (
                     <li key={t} className="flex gap-4">
-                      <span className="shrink-0 text-[0.75rem] font-medium text-gold tabular-nums">
+                      <span className="shrink-0 text-[0.75rem] font-medium text-gold-ink tabular-nums">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className="text-[0.875rem] leading-relaxed text-ink">
@@ -253,6 +256,7 @@ export default async function ArticlePage({ params }: Params) {
 
             <Link
               href="/journal-club"
+              transitionTypes={["nav-back"]}
               className="mt-10 inline-block border border-rule px-4 py-2.5 text-[0.6875rem] font-medium tracking-[0.14em] text-ink-60 uppercase transition-colors duration-200 hover:border-accent hover:text-accent"
             >
               All articles
@@ -263,7 +267,7 @@ export default async function ArticlePage({ params }: Params) {
 
       {/* ---- references ---- */}
       {a.references.length > 0 && (
-        <section aria-labelledby="refs-heading" className="border-t border-rule">
+        <section aria-labelledby="refs-heading" className="defer-paint border-t border-rule">
           <div className="mx-auto max-w-[1200px] px-gutter py-16 md:py-20">
             <h2 id="refs-heading" className="eyebrow">
               References
@@ -301,12 +305,13 @@ export default async function ArticlePage({ params }: Params) {
       {/* ---- prev / next ---- */}
       <nav
         aria-label="More articles"
-        className="border-t border-rule bg-surface no-print"
+        className="defer-paint border-t border-rule bg-surface no-print"
       >
         <div className="mx-auto grid max-w-[1200px] gap-px px-gutter sm:grid-cols-2">
           {older ? (
             <Link
               href={`/journal-club/${older.slug}`}
+              transitionTypes={["nav-back"]}
               className="group block py-10 transition-colors duration-200 sm:pr-8"
             >
               <p className="eyebrow">
@@ -322,6 +327,7 @@ export default async function ArticlePage({ params }: Params) {
           {newer && (
             <Link
               href={`/journal-club/${newer.slug}`}
+              transitionTypes={["nav-forward"]}
               className="group block py-10 transition-colors duration-200 sm:pl-8 sm:text-right"
             >
               <p className="eyebrow">
@@ -334,7 +340,8 @@ export default async function ArticlePage({ params }: Params) {
           )}
         </div>
       </nav>
-    </article>
+      </article>
+    </PageTransition>
   );
 }
 

@@ -1,8 +1,8 @@
 export const site = {
-  name: "LASUSMA Research & Journal Club",
-  mark: "LASUSMA RJC",
+  name: "LASUMSA Research & Journal Club",
+  mark: "LASUMSA RJC",
   wordmark: {
-    primary: "LASUSMA",
+    primary: "LASUMSA",
     secondary: "Research + Journal Club",
   },
   institution: "Lagos State University College of Medicine",
