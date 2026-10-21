@@ -1,0 +1,35 @@
+{
+  "name": "lrjc-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LASUSMA Research & Journal Club — publication platform",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "measure:js": "node scripts/measure-js.mjs",
+    "audit": "node scripts/audit.mjs"
+  },
+  "dependencies": {
+    "gray-matter": "4.0.3",
+    "next": "16.3.6",
+    "next-mdx-remote": "6.0.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "resend": "6.30.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "22",
+    "@types/react": "19",
+    "@types/react-dom": "19",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.3.6",
+    "postcss": "^8",
+    "tailwindcss": "4.3.3",
+    "typescript": "^5"
+  }
+}

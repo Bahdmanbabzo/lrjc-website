@@ -1,0 +1,81 @@
+---
+title: "Segmentation Beyond the Benchmark: Designing Evaluations for Clinical Use"
+slug: segmentation-beyond-the-benchmark
+section: "Reviews"
+authors:
+  - "O. Eze"
+  - "T. Okafor"
+  - "N. Bello"
+abstract: >-
+  Benchmark-driven medical image segmentation optimises for a metric on a fixed
+  dataset. We review the gap between that objective and clinical usefulness,
+  covering boundary-sensitive metrics, out-of-distribution evaluation, and
+  lesion types systematically excluded from public benchmarks.
+pages: "47-58"
+keywords:
+  - "image segmentation"
+  - "benchmarking"
+  - "evaluation methodology"
+  - "neuro-oncology"
+---
+
+{/* SAMPLE CONTENT — replace before launch. */}
+
+## The optimisation target
+
+A model trained and evaluated on a public benchmark optimises one measurable
+quantity on one distribution of data. This is a reasonable thing to do, and it
+is what the field rewards. The difficulty is that neither the quantity nor the
+distribution corresponds to the clinical question.
+
+## Volume is not location
+
+Dice similarity and similar overlap metrics weight a voxelised volume. A thin
+band of error along a tumour boundary contributes almost nothing to either the
+intersection or the union, so it is barely penalised.
+
+That is acceptable for volumetric tasks and inadequate for tasks where the
+boundary is the decision. In neurosurgical planning, in radiotherapy field
+planning, in determining whether a lesion is operable, the boundary is the
+entire question. A model can lead a benchmark and be clinically unreliable, and
+these two facts are not in tension.
+
+Surface-distance metrics, which penalise boundary error directly, are a closer
+fit for these uses. They are not universally used, partly because no single
+threshold clearly defines a clinically acceptable boundary error.
+
+## What the benchmarks do not contain
+
+Public brain tumour benchmarks consist overwhelmingly of high-grade glioma in
+adults, imaged pre-operatively, on a narrow set of acquisition protocols. That
+excludes postoperative patients with treatment-related change, lower-grade
+tumours, non-neoplastic lesions, paediatric cases, and every scanner outside the
+contributing institutions.
+
+Excluded cases are not randomly distributed. They are the difficult cases, and
+they are the ones on which a clinician would most want assistance. A model
+whose published score is high will tend to degrade on exactly the population
+that was never represented.
+
+## Evaluating outside the benchmark
+
+Three practices would improve the alignment between published evaluation and
+clinical use:
+
+1. **Report a boundary-sensitive metric alongside Dice.** If the downstream use
+   is spatial, the primary metric should be spatial.
+2. **Evaluate on a locally sourced cohort.** A held-out external set drawn from
+   the institution that will deploy the model is worth more than any additional
+   percentage point on a public benchmark.
+3. **Report performance stratified by case difficulty,** including the failure
+   cases. A single mean accuracy over a curated cohort conceals the distribution
+   that matters.
+
+## A practical note for new researchers
+
+There is a real temptation to treat public benchmarks as a shortcut to
+publication, and the temptation is understandable. The counter-argument is not
+that this is improper, but that it is crowded: many groups can run the same
+comparison, and a modest increment on a saturated benchmark is a weak
+contribution. The same effort spent on an excluded population is likely to
+support a stronger paper and a more useful model.
