@@ -103,6 +103,10 @@
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
+    /* Clip the viewport itself (html wins over body for viewport
+       propagation) so no browser ever shows a horizontal scrollbar. `clip`
+       rather than `hidden` keeps the sticky masthead working. */
+    overflow-x: clip;
   }
 
   body {
@@ -112,8 +116,8 @@
     font-feature-settings: "kern", "liga", "calt";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* `clip` rather than `hidden`: it contains stray wide content without
-       creating a scroll container, so the sticky masthead still works. */
+    /* Second line of defence: contains stray wide content without creating
+       a scroll container, so the sticky masthead still works. */
     overflow-x: clip;
   }
 
@@ -465,6 +469,9 @@
     line-height: 1.7;
     color: var(--color-ink);
     max-width: 68ch;
+    /* Long unbreakable tokens (raw URLs, DOIs) must wrap within the reading
+       card instead of pushing the page past the viewport. */
+    overflow-wrap: break-word;
   }
 
   .prose-editorial > * + * {
