@@ -15,7 +15,9 @@ export function SectionHeading({
   return (
     <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       <p className="eyebrow eyebrow-accent">{eyebrow}</p>
-      <h2 className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.06]">{title}</h2>
+      <h2 className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.06] text-ink">
+        {title}
+      </h2>
       {lede && <p className="mt-6 text-[1.0625rem] leading-relaxed text-ink-60">{lede}</p>}
     </div>
   );
@@ -64,10 +66,10 @@ export function PageHeader({
   meta?: { label: string; value: string }[];
 }) {
   return (
-    <header className="border-b border-rule">
+    <header className="border-b border-rule bg-surface">
       <div className="mx-auto max-w-[1200px] px-gutter pt-20 pb-16 md:pt-32 md:pb-20">
         <p className="eyebrow eyebrow-accent">{eyebrow}</p>
-        <h1 className="mt-6 max-w-[16ch] text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.02]">
+        <h1 className="mt-6 max-w-[16ch] text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.02] text-ink">
           {title}
         </h1>
         {lede && (
@@ -80,7 +82,9 @@ export function PageHeader({
             {meta.map((m) => (
               <div key={m.label}>
                 <dt className="eyebrow">{m.label}</dt>
-                <dd className="mt-2 font-display text-lg text-ink">{m.value}</dd>
+                <dd className="mt-2 font-display text-lg text-ink">
+                  {m.value}
+                </dd>
               </div>
             ))}
           </dl>

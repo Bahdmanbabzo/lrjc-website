@@ -134,11 +134,11 @@ export default async function ResourcesPage() {
       />
 
       {/* ---- critical appraisal ---- */}
-      <section aria-labelledby="appraisal-heading" className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
+      <section aria-labelledby="appraisal-heading" className="mx-auto max-w-[1200px] px-gutter bg-surface py-20 md:py-28">
         <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
           <div>
             <p className="eyebrow eyebrow-accent">01</p>
-            <h2 id="appraisal-heading" className="mt-5 text-[1.625rem] leading-[1.2]">
+            <h2 id="appraisal-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-ink">
               Critical appraisal &amp; methodology
             </h2>
           </div>
@@ -169,12 +169,12 @@ export default async function ResourcesPage() {
       </section>
 
       {/* ---- literature search ---- */}
-      <section aria-labelledby="search-heading" className="defer-paint border-t border-rule bg-surface">
+      <section aria-labelledby="search-heading" className="defer-paint border-t border-rule bg-surface-raised">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <div>
               <p className="eyebrow eyebrow-accent">02</p>
-              <h2 id="search-heading" className="mt-5 text-[1.625rem] leading-[1.2]">
+              <h2 id="search-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-ink">
                 Literature search
               </h2>
             </div>
@@ -201,12 +201,12 @@ export default async function ResourcesPage() {
       </section>
 
       {/* ---- software ---- */}
-      <section aria-labelledby="software-heading" className="defer-paint border-t border-rule">
+      <section aria-labelledby="software-heading" className="defer-paint border-t border-rule bg-surface">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <div>
               <p className="eyebrow eyebrow-accent">03</p>
-              <h2 id="software-heading" className="mt-5 text-[1.625rem] leading-[1.2]">
+              <h2 id="software-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-ink">
                 Software &amp; tools
               </h2>
             </div>
@@ -233,12 +233,12 @@ export default async function ResourcesPage() {
       </section>
 
       {/* ---- statistics notes ---- */}
-      <section aria-labelledby="stats-heading" className="defer-paint border-t border-rule bg-surface">
+      <section aria-labelledby="stats-heading" className="defer-paint border-t border-rule bg-surface-raised">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <div>
               <p className="eyebrow eyebrow-accent">04</p>
-              <h2 id="stats-heading" className="mt-5 text-[1.625rem] leading-[1.2]">
+              <h2 id="stats-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-ink">
                 Five things we keep saying
               </h2>
             </div>
@@ -260,12 +260,12 @@ export default async function ResourcesPage() {
       </section>
 
       {/* ---- club resources ---- */}
-      <section aria-labelledby="club-heading" className="defer-paint border-t border-rule">
+      <section aria-labelledby="club-heading" className="defer-paint border-t border-rule bg-surface">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <div>
               <p className="eyebrow eyebrow-accent">05</p>
-              <h2 id="club-heading" className="mt-5 text-[1.625rem] leading-[1.2]">
+              <h2 id="club-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-ink">
                 Our own material
               </h2>
             </div>

@@ -91,3 +91,62 @@ export const disciplines = [
   "Pharmacology",
   "Maternal & Child Health",
 ] as const;
+
+/** Executive & editorial board for the 2026 council. */
+export const executives = [
+  {
+    name: "Abdulgafar Hikmah",
+    role: "Editor in Chief",
+    image: "/figures/executives/abdulgafar-hikmah.webp",
+  },
+  {
+    name: "Abdul-Liadi Faaiz",
+    role: "Deputy Editor in Chief",
+    image: "/figures/executives/abdul-liadi-faaiz.webp",
+  },
+  {
+    name: "Amarachi Adeyemi",
+    role: "General Secretary",
+    image: "/figures/executives/amarachi-adeyemi.webp",
+  },
+  {
+    name: "Folarin Abisola",
+    role: "Director of Research",
+    image: "/figures/executives/folarin-abisola.webp",
+  },
+  {
+    name: "Ogundipe Taiwo",
+    role: "Director of Publications",
+    image: "/figures/executives/ogundipe-taiwo.webp",
+  },
+  {
+    name: "Barika Abdulmalik",
+    role: "Programs Director",
+    image: "/figures/executives/barika-abdulmalik.webp",
+  },
+  {
+    name: "Raji Mosope",
+    role: "Director of Communications",
+    image: "/figures/executives/raji-mosope.webp",
+  },
+  {
+    name: "Beckley Oserebameh",
+    role: "Information and Technical Lead 1",
+    image: "/figures/executives/beckley-oserebameh.webp",
+  },
+  {
+    name: "Adewunmi Hassan",
+    role: "Information and Technical Lead 2",
+    image: "/figures/executives/adewunmi-hassan.webp",
+  },
+  {
+    name: "Adedoyin Adeboun",
+    role: "Treasurer",
+    image: "/figures/executives/adedoyin-adeboun.webp",
+  },
+] as const;
+
+export const executiveCouncilPhoto = {
+  src: "/figures/executives/executives-2026.webp",
+  alt: "The 2026 LASUMSA Research & Journal Club executive council.",
+} as const;

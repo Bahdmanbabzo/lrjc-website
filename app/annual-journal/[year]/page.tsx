@@ -56,20 +56,20 @@ export default async function IssuePage({ params }: Params) {
       {/* ---- cover ---- */}
       <section className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
         <div className="mx-auto w-full max-w-[380px]">
-          <div className="relative aspect-3/4 overflow-hidden border border-rule bg-paper p-9 shadow-[0_24px_50px_-28px_rgba(23,23,23,0.3)]">
+          <div className="relative aspect-3/4 overflow-hidden border border-cover-rule bg-journal-cover p-9 shadow-[0_24px_50px_-28px_rgba(0,0,0,0.55)]">
             <div className="flex h-full flex-col">
-              <p className="font-display text-[1.0625rem] tracking-[0.1em] text-ink">
+              <p className="font-display text-[1.0625rem] tracking-[0.1em] text-cover-ink">
                 LASUMSA
               </p>
               <div aria-hidden className="my-2.5 h-px w-full bg-gold" />
-              <p className="text-[0.4375rem] font-medium tracking-[0.18em] text-ink-60 uppercase">
+              <p className="text-[0.4375rem] font-medium tracking-[0.18em] text-cover-muted uppercase">
                 Research + Journal Club
               </p>
 
               <div className="relative my-auto py-8">
                 <svg
                   viewBox="0 0 640 640"
-                  className="w-[150%] -translate-x-[16%] text-accent opacity-40"
+                  className="w-[150%] -translate-x-[16%] text-cover-accent opacity-40"
                   aria-hidden
                   focusable="false"
                 >
@@ -83,13 +83,13 @@ export default async function IssuePage({ params }: Params) {
                 </svg>
               </div>
 
-              <p className="text-[0.5625rem] font-medium tracking-[0.16em] text-accent uppercase">
+              <p className="text-[0.5625rem] font-medium tracking-[0.16em] text-cover-accent uppercase">
                 Annual Journal
               </p>
-              <p className="mt-2 font-display text-[1.5rem] leading-tight text-ink">
+              <p className="mt-2 font-display text-[1.5rem] leading-tight text-cover-ink">
                 {issue.title}
               </p>
-              <p className="mt-3 font-display text-[1.125rem] leading-none text-gold-ink">
+              <p className="mt-3 font-display text-[1.125rem] leading-none text-cover-gold-ink">
                 Vol. {issue.volume} · {issue.year}
               </p>
             </div>
@@ -98,9 +98,9 @@ export default async function IssuePage({ params }: Params) {
       </section>
 
       {/* ---- contents ---- */}
-      <section aria-labelledby="contents-heading" className="border-t border-rule bg-surface">
+      <section aria-labelledby="contents-heading" className="border-t border-rule bg-surface-raised">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
-          <h2 id="contents-heading" className="text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08]">
+          <h2 id="contents-heading" className="text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink">
             Contents
           </h2>
 
@@ -130,7 +130,7 @@ export default async function IssuePage({ params }: Params) {
                             {String(i + 1).padStart(2, "0")}
                           </p>
                           <div className="min-w-0">
-                            <h4 className="max-w-[54ch] font-display text-[1.375rem] leading-[1.22] text-ink md:text-[1.5rem]">
+                            <h4 className="max-w-[54ch] font-display text-[1.375rem] font-semibold leading-[1.22] text-accent md:text-[1.5rem]">
                               {e.title}
                             </h4>
                             <p className="mt-2.5 text-[0.8125rem] text-ink-60">
@@ -167,13 +167,13 @@ export default async function IssuePage({ params }: Params) {
       </section>
 
       {/* ---- editorial ---- */}
-      <section aria-labelledby="editorial-heading" className="border-t border-rule">
+      <section aria-labelledby="editorial-heading" className="border-t border-rule bg-surface">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="max-w-[68ch]">
             <p className="eyebrow eyebrow-accent">Editorial</p>
             <h2
               id="editorial-heading"
-              className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.1]"
+              className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.1] text-ink"
             >
               {issue.editorialTitle ?? "Editorial"}
             </h2>
@@ -188,7 +188,7 @@ export default async function IssuePage({ params }: Params) {
       </section>
 
       {/* ---- contributors ---- */}
-      <section aria-labelledby="contributors-heading" className="border-t border-rule">
+      <section aria-labelledby="contributors-heading" className="border-t border-rule bg-surface">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-24">
           <h2
             id="contributors-heading"
@@ -209,7 +209,7 @@ export default async function IssuePage({ params }: Params) {
         </div>
       </section>
 
-      <section className="border-t border-rule">
+      <section className="border-t border-rule bg-surface">
         <div className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-x-10 gap-y-6 px-gutter py-16">
           <p className="max-w-[34ch] text-[0.9375rem] leading-relaxed text-ink-60">
             How this issue&rsquo;s appraisals were developed, month by month, in

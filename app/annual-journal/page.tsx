@@ -21,7 +21,7 @@ export default async function AnnualJournalIndexPage() {
         lede="Once a year we gather the year’s completed work into a single issue — original research, reviews, commentaries and student perspectives. Each volume is given a permanent address and remains citable."
       />
 
-      <section className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
+      <section className="mx-auto max-w-[1200px] px-gutter bg-surface py-20 md:py-28">
         {issues.length === 0 ? (
           <p className="font-display text-2xl text-ink">
             The first volume is in preparation.

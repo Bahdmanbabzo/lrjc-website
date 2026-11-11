@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLink, PageHeader } from "@/components/editorial";
+import { getPublishedArticles } from "@/lib/content";
 import { PageTransition } from "@/components/page-transition";
 import {
   opportunities,
@@ -23,6 +24,7 @@ const STATUS_TONE: Record<string, string> = {
 };
 
 export default function ResearchPage() {
+  void getPublishedArticles;
   return (
     <PageTransition>
       <PageHeader
@@ -38,16 +40,16 @@ export default function ResearchPage() {
       />
 
       {/* ---- projects ---- */}
-      <section aria-labelledby="projects-heading" className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
+      <section aria-labelledby="projects-heading" className="mx-auto max-w-[1200px] px-gutter bg-surface py-20 md:py-28">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="eyebrow eyebrow-accent">Projects</p>
-            <h2 id="projects-heading" className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08]">
+            <h2 id="projects-heading" className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink">
               Ongoing and completed work
             </h2>
           </div>
           <p className="max-w-[30ch] text-[0.875rem] leading-relaxed text-ink-60">
-            Hover a project for its method and outputs.
+            Select a project for its method and outputs.
           </p>
         </div>
 
@@ -131,12 +133,12 @@ export default function ResearchPage() {
       </section>
 
       {/* ---- publications ---- */}
-      <section aria-labelledby="publications-heading" className="defer-paint border-t border-rule bg-surface">
+      <section aria-labelledby="publications-heading" className="defer-paint border-t border-rule bg-surface-raised">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <p className="eyebrow eyebrow-accent">Published</p>
           <h2
             id="publications-heading"
-            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08]"
+            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink"
           >
             Publications
           </h2>
@@ -152,7 +154,7 @@ export default function ResearchPage() {
                     <p className="text-[0.8125rem] text-ink-40">
                       {pub.authors} · {pub.year}
                     </p>
-                    <p className="mt-2 max-w-[62ch] font-display text-[1.25rem] leading-[1.25] text-ink transition-colors duration-200 group-hover:text-accent">
+                    <p className="mt-2 max-w-[62ch] font-display text-[1.25rem] font-semibold leading-[1.25] text-accent transition-colors duration-200 group-hover:text-ink">
                       {pub.title}
                     </p>
                     <p className="mt-1.5 text-[0.875rem] text-ink-60">
@@ -164,7 +166,7 @@ export default function ResearchPage() {
                     <p className="text-[0.8125rem] text-ink-40">
                       {pub.authors} · {pub.year}
                     </p>
-                    <p className="mt-2 max-w-[62ch] font-display text-[1.25rem] leading-[1.25] text-ink">
+                    <p className="mt-2 max-w-[62ch] font-display text-[1.25rem] font-semibold leading-[1.25] text-accent">
                       {pub.title}
                     </p>
                     <p className="mt-1.5 text-[0.875rem] text-ink-60">
@@ -179,12 +181,12 @@ export default function ResearchPage() {
       </section>
 
       {/* ---- presentations ---- */}
-      <section aria-labelledby="presentations-heading" className="defer-paint border-t border-rule">
+      <section aria-labelledby="presentations-heading" className="defer-paint border-t border-rule bg-surface">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <p className="eyebrow eyebrow-accent">Presented</p>
           <h2
             id="presentations-heading"
-            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08]"
+            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink"
           >
             Conference presentations
           </h2>
@@ -215,12 +217,12 @@ export default function ResearchPage() {
       </section>
 
       {/* ---- opportunities ---- */}
-      <section aria-labelledby="opportunities-heading" className="defer-paint border-t border-rule bg-surface">
+      <section aria-labelledby="opportunities-heading" className="defer-paint border-t border-rule bg-surface-raised">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <p className="eyebrow eyebrow-accent">Get involved</p>
           <h2
             id="opportunities-heading"
-            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08]"
+            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink"
           >
             Ways to take part
           </h2>
@@ -231,7 +233,9 @@ export default function ResearchPage() {
                 <p className="text-[0.75rem] font-medium text-gold-ink tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <h3 className="mt-5 text-[1.375rem] leading-[1.2]">{o.title}</h3>
+                <h3 className="mt-5 text-[1.375rem] leading-[1.2] text-ink">
+                  {o.title}
+                </h3>
                 <p className="mt-3 text-[0.75rem] tracking-[0.1em] text-accent uppercase">
                   {o.commitment}
                 </p>

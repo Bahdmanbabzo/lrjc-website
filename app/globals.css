@@ -1,39 +1,66 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   LASUMSA Research & Journal Club — design tokens
-   Editorial / academic-publication system. Single light theme.
+   LASUMSA Research & Journal Club — "The Algorithmic Theme" tokens
+   Editorial / computational-design system on a Deep Midnight Blue canvas.
    ------------------------------------------------------------------ */
 
 @theme {
-  /* Surfaces — the golden hour's warm paper */
-  --color-paper: #fefbf4;
-  --color-surface: #ffffff;
+  /* Surfaces — Deep Midnight Blue canvas */
+  --color-canvas: #153c59;
+  --color-canvas-deep: #0a2132;
+  --color-paper: #153c59;
 
-  /* Ink */
-  --color-ink: #1a1a17;
-  --color-ink-60: #6b6a61;
-  --color-ink-40: #8b897e;
+  /* Content surfaces — transparent dark scrims over the node-plexus canvas
+     to guarantee WCAG AA text readability. */
+  --color-surface-scrim: rgba(21, 60, 89, 0.45);
+  --color-surface: rgba(21, 60, 89, 0.45);
+  --color-surface-raised: rgba(14, 42, 64, 0.62);
+  --color-surface-strong: rgba(12, 36, 55, 0.74);
+  --color-surface-glass: rgba(21, 60, 89, 0.45);
+
+  /* Body Text & Smaller Texts — Warm Cream palette */
+  --color-ink: #fefbf4;
+  --color-ink-bright: #fefbf4;
+  --color-ink-60: #f3ede0;
+  --color-ink-40: #e2dac9;
+  --color-gold-muted: #f5b419;
+
+  /* Secondary Accent / Data Lines */
+  --color-data-line-low: rgba(245, 180, 25, 0.35);
+  --color-data-line-high: rgba(245, 180, 25, 0.7);
 
   /* Structure */
-  --color-rule: #e7e3d8;
-  --color-rule-strong: #d6d1c4;
+  --color-rule: rgba(241, 245, 249, 0.14);
+  --color-rule-strong: rgba(241, 245, 249, 0.28);
 
-  /* Institutional accent — the shadowed facade */
-  --color-accent: #153c59;
-  --color-accent-hover: #0e2c42;
-  --color-accent-05: #e9eff3;
+  /* Primary Accent & Constellation Links — Amber Gold #f5b419 */
+  --color-accent: #f5b419;
+  --color-accent-hover: #ffd45e;
+  --color-accent-05: rgba(245, 180, 25, 0.1);
 
-  /* Highlight — used sparingly (the light itself).
-     `gold` is decorative/fill only; `gold-ink` is the text-safe value. */
-  --color-gold: #f5b41a;
-  --color-gold-ink: #7a5200;
-  --color-gold-40: #fbe6ad;
+  /* Highlight & Muted Gold metadata tokens */
+  --color-gold: #f5b419;
+  --color-gold-ink: rgba(245, 180, 25, 0.75);
+  --color-gold-40: rgba(245, 180, 25, 0.35);
+  --color-focus: #f5b419;
+
+  /* The annual journal cover stays a light physical object */
+  --color-journal-cover: #fefbf4;
+  --color-cover-ink: #1a1a17;
+  --color-cover-muted: #6b6a61;
+  --color-cover-rule: #d6d1c4;
+  --color-cover-accent: #153c59;
+  --color-cover-gold-ink: #7a5200;
+
+  --color-code-bg: #0b2435;
 
   /* Typography */
   --font-display: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo,
+    Consolas, monospace;
 
   /* Motion */
   --ease-editorial: cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -54,7 +81,7 @@
 
 :root {
   /* Sticky masthead height — referenced by the layout and mobile panel */
-  --header-h: 4rem;
+  --header-h: 4.25rem;
 }
 
 @media (min-width: 768px) {
@@ -69,7 +96,8 @@
 
 @layer base {
   :root {
-    color-scheme: light;
+    color-scheme: dark;
+    scrollbar-color: rgba(241, 245, 249, 0.28) transparent;
   }
 
   html {
@@ -78,7 +106,7 @@
   }
 
   body {
-    background-color: var(--color-paper);
+    background-color: var(--color-canvas);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-feature-settings: "kern", "liga", "calt";
@@ -91,11 +119,11 @@
 
   ::selection {
     background-color: var(--color-gold);
-    color: var(--color-accent);
+    color: var(--color-canvas);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-focus);
     outline-offset: 3px;
   }
 
@@ -111,6 +139,276 @@
 
   p {
     text-wrap: pretty;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Content Surface Scrims (WCAG AA contrast + 12px backdrop blur)
+   ------------------------------------------------------------------ */
+
+.bg-surface,
+.bg-surface-raised,
+.bg-surface-strong {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.bg-surface {
+  background-color: var(--color-surface-scrim);
+  background-image: linear-gradient(
+    180deg,
+    rgba(10, 33, 50, 0.42) 0%,
+    rgba(10, 33, 50, 0.54) 100%
+  );
+}
+
+.bg-surface-raised {
+  background-color: rgba(21, 60, 89, 0.52);
+  background-image: linear-gradient(
+    180deg,
+    rgba(8, 27, 42, 0.56) 0%,
+    rgba(8, 27, 42, 0.66) 100%
+  );
+}
+
+.bg-surface-strong {
+  background-color: rgba(21, 60, 89, 0.58);
+  background-image: linear-gradient(
+    180deg,
+    rgba(8, 27, 42, 0.68) 0%,
+    rgba(8, 27, 42, 0.78) 100%
+  );
+}
+
+/* ------------------------------------------------------------------
+   Algorithmic Background & Centered Club Logo Watermark
+   ------------------------------------------------------------------ */
+
+.site-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--color-canvas);
+}
+
+.background-poster {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      58% 68% at 72% 26%,
+      rgba(245, 180, 25, 0.14),
+      transparent 62%
+    ),
+    radial-gradient(
+      52% 60% at 18% 78%,
+      rgba(245, 180, 25, 0.08),
+      transparent 68%
+    ),
+    linear-gradient(158deg, #153c59 0%, #0a2132 100%);
+  transition: opacity 700ms var(--ease-editorial);
+}
+
+.site-background[data-ready="true"] .background-poster {
+  opacity: 0;
+}
+
+.background-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Centered faint circular watermark of the LASUMSA emblem behind reading pane */
+.emblem-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(70vmin, 620px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  opacity: 0.07;
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(
+    circle at 50% 50%,
+    #000 48%,
+    transparent 82%
+  );
+  mask-image: radial-gradient(circle at 50% 50%, #000 48%, transparent 82%);
+}
+
+.masthead-scrim {
+  background-color: rgba(21, 60, 89, 0.55);
+  background-image: linear-gradient(
+    180deg,
+    rgba(10, 33, 50, 0.78) 0%,
+    rgba(10, 33, 50, 0.62) 100%
+  );
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.hero-atmosphere {
+  background: linear-gradient(
+    100deg,
+    rgba(10, 33, 50, 0.82) 0%,
+    rgba(21, 60, 89, 0.45) 48%,
+    rgba(21, 60, 89, 0.22) 76%,
+    rgba(21, 60, 89, 0) 100%
+  );
+}
+
+@media (max-width: 1023px) {
+  .hero-atmosphere {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 33, 50, 0.82) 0%,
+      rgba(21, 60, 89, 0.52) 60%,
+      rgba(21, 60, 89, 0.32) 100%
+    );
+  }
+}
+
+/* ------------------------------------------------------------------
+   Technical & Algorithmic Scaffolding (Corner Brackets, HUD & Dividers)
+   ------------------------------------------------------------------ */
+
+.algo-frame {
+  position: relative;
+  border: 1px solid rgba(245, 180, 25, 0.22);
+  background-color: rgba(12, 36, 55, 0.72);
+  background-image: linear-gradient(
+    180deg,
+    rgba(21, 60, 89, 0.45) 0%,
+    rgba(10, 33, 50, 0.78) 100%
+  );
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 24px 64px -28px rgba(4, 14, 24, 0.65);
+}
+
+.algo-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  border-color: var(--color-gold);
+}
+
+.algo-corner-tl {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--color-gold);
+  border-left: 2px solid var(--color-gold);
+}
+
+.algo-corner-tr {
+  top: -1px;
+  right: -1px;
+  border-top: 2px solid var(--color-gold);
+  border-right: 2px solid var(--color-gold);
+}
+
+.algo-corner-bl {
+  bottom: -1px;
+  left: -1px;
+  border-bottom: 2px solid var(--color-gold);
+  border-left: 2px solid var(--color-gold);
+}
+
+.algo-corner-br {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--color-gold);
+  border-right: 2px solid var(--color-gold);
+}
+
+.algo-meta-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-variant-caps: small-caps;
+}
+
+/* Thin geometric rule (#f5b419 at 25% opacity) with a central junction dot */
+.algo-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-block: 2rem;
+}
+
+.algo-divider::before,
+.algo-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: rgba(245, 180, 25, 0.25);
+}
+
+.algo-divider-dot {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-inline: 0.75rem;
+}
+
+.algo-divider-dot::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background-color: var(--color-gold);
+  box-shadow: 0 0 8px rgba(245, 180, 25, 0.65);
+}
+
+.algo-divider-dot::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 9999px;
+  border: 1px solid rgba(245, 180, 25, 0.35);
+}
+
+/* Coordinate tick marks along top/bottom edges of the reading card */
+.algo-tick-bar {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(245, 180, 25, 0.28) 0px,
+    rgba(245, 180, 25, 0.28) 1px,
+    transparent 1px,
+    transparent 24px
+  );
+  height: 4px;
+  width: 100%;
+  opacity: 0.65;
+}
+
+@media (prefers-contrast: more) {
+  .site-background {
+    opacity: 0.55;
+  }
+
+  .masthead-scrim {
+    background-color: var(--color-canvas-deep);
+  }
+}
+
+@media (forced-colors: active) {
+  .site-background {
+    display: none;
   }
 }
 
@@ -131,7 +429,7 @@
   }
 
   .eyebrow-accent {
-    color: var(--color-accent);
+    color: var(--color-gold-muted);
   }
 
   /* Animated hairline underline for inline text links */
@@ -157,15 +455,14 @@
 }
 
 /* ------------------------------------------------------------------
-   Article prose — hand-written to match the editorial system
-   (deliberately not @tailwindcss/typography)
+   Article prose — 1.05rem off-white body text with 1.7 line height
    ------------------------------------------------------------------ */
 
 @layer components {
   .prose-editorial {
     font-family: var(--font-sans);
-    font-size: 1.0625rem;
-    line-height: 1.75;
+    font-size: 1.05rem;
+    line-height: 1.7;
     color: var(--color-ink);
     max-width: 68ch;
   }
@@ -175,22 +472,25 @@
   }
 
   .prose-editorial h2 {
-    font-size: 1.75rem;
-    line-height: 1.2;
-    margin-top: 3.5rem;
+    font-size: 1.625rem;
+    line-height: 1.22;
+    color: var(--color-ink-bright);
+    margin-top: 3rem;
     margin-bottom: -0.5rem;
   }
 
   .prose-editorial h3 {
     font-size: 1.25rem;
     line-height: 1.3;
-    margin-top: 2.5rem;
+    color: var(--color-ink-bright);
+    margin-top: 2.25rem;
     margin-bottom: -0.75rem;
   }
 
   .prose-editorial h4 {
     font-size: 1rem;
     font-weight: 500;
+    color: var(--color-ink-bright);
     letter-spacing: 0;
     margin-top: 2rem;
   }
@@ -204,11 +504,12 @@
   }
 
   .prose-editorial a:hover {
-    text-decoration-color: var(--color-accent);
+    text-decoration-color: var(--color-ink);
   }
 
   .prose-editorial strong {
     font-weight: 600;
+    color: var(--color-ink-bright);
   }
 
   .prose-editorial ul,
@@ -265,8 +566,8 @@
   .prose-editorial figure img {
     width: 100%;
     height: auto;
-    border: 1px solid var(--color-rule);
-    background-color: var(--color-surface);
+    border: 1px solid var(--color-cover-rule);
+    background-color: var(--color-journal-cover);
   }
 
   .prose-editorial table {
@@ -293,7 +594,7 @@
   }
 
   .prose-editorial code {
-    font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-family: var(--font-mono);
     font-size: 0.875em;
     background-color: var(--color-accent-05);
     color: var(--color-accent);
@@ -301,8 +602,8 @@
   }
 
   .prose-editorial pre {
-    background-color: var(--color-ink);
-    color: var(--color-paper);
+    background-color: var(--color-code-bg);
+    color: var(--color-ink);
     padding: 1.5rem;
     overflow-x: auto;
     font-size: 0.875rem;
@@ -317,8 +618,8 @@
 
   .prose-editorial hr {
     border: 0;
-    border-top: 1px solid var(--color-rule);
-    margin-block: 3rem;
+    border-top: 1px solid rgba(245, 180, 25, 0.25);
+    margin-block: 2.5rem;
   }
 }
 
@@ -331,18 +632,12 @@
 
 /* ------------------------------------------------------------------
    Page transitions — zero JavaScript.
-
-   React's <ViewTransition> (Next 16) activates the browser View
-   Transitions API on route changes. The old page exits quickly; the
-   new page is revealed with a clip-path wipe. Browsers without View
-   Transitions get the `.page-shell` entrance fallback below.
    ------------------------------------------------------------------ */
 
 ::view-transition {
   pointer-events: none;
 }
 
-/* forward: old shrinks left, new grows in from the right */
 @keyframes page-out-forward {
   from {
     clip-path: inset(0);
@@ -365,7 +660,6 @@
   }
 }
 
-/* back: mirrored */
 @keyframes page-out-back {
   from {
     clip-path: inset(0);
@@ -406,7 +700,6 @@
   animation: page-in-back var(--duration-page-enter) var(--ease-page-in) both;
 }
 
-/* Fallback for browsers without View Transitions. */
 @supports not (view-transition-name: none) {
   @media (prefers-reduced-motion: no-preference) {
     .page-shell {
@@ -446,7 +739,43 @@
 }
 
 @media print {
-  .no-print {
+  :root {
+    color-scheme: light;
+    --color-canvas: #ffffff;
+    --color-canvas-deep: #ffffff;
+    --color-paper: #ffffff;
+    --color-surface: #ffffff;
+    --color-surface-raised: #ffffff;
+    --color-surface-strong: #ffffff;
+    --color-ink: #111111;
+    --color-ink-60: #333333;
+    --color-ink-40: #555555;
+    --color-rule: #dddddd;
+    --color-rule-strong: #b9b9b9;
+    --color-accent: #153c59;
+    --color-gold: #b98a0c;
+    --color-gold-ink: #7a5200;
+    --color-gold-40: #fbe6ad;
+    --color-focus: #153c59;
+    --color-code-bg: #f5f5f5;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  .no-print,
+  .site-background,
+  .motion-toggle {
     display: none !important;
+  }
+
+  .masthead-scrim,
+  .hero-atmosphere,
+  .algo-frame {
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
   }
 }

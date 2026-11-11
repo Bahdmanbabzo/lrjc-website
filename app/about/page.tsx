@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHeader } from "@/components/editorial";
-import { journalProcess, site } from "@/lib/site";
+import {
+  executiveCouncilPhoto,
+  executives,
+  journalProcess,
+  site,
+} from "@/lib/site";
 import { PageTransition } from "@/components/page-transition";
 
 export const metadata: Metadata = {
@@ -35,34 +41,6 @@ const values = [
   },
 ];
 
-const team = [
-  {
-    name: "O. Eze",
-    role: "President",
-    bio: "Final-year student. Leads the research programme and the neuro-oncology working group.",
-  },
-  {
-    name: "A. Balogun",
-    role: "Vice-President · Research Lead",
-    bio: "Coordinates project supervision and the annual journal's editorial process.",
-  },
-  {
-    name: "F. Adeyemi",
-    role: "Secretary",
-    bio: "Maintains the appraisal archive and coordinates monthly sessions.",
-  },
-  {
-    name: "N. Bello",
-    role: "Publications Officer",
-    bio: "Oversees manuscript preparation, the annual volume, and external presentation.",
-  },
-  {
-    name: "T. Okafor",
-    role: "Technical Lead",
-    bio: "Maintains the analytical pipeline and the research data infrastructure.",
-  },
-];
-
 const milestones = [
   {
     year: "2025",
@@ -88,7 +66,7 @@ export default function AboutPage() {
       />
 
       {/* ---- mission ---- */}
-      <section aria-labelledby="mission-heading" className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
+      <section aria-labelledby="mission-heading" className="mx-auto max-w-[1200px] px-gutter bg-surface py-20 md:py-28">
         <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
           <h2 id="mission-heading" className="text-[0.8125rem] font-medium tracking-[0.14em] text-ink uppercase">
             Our mission
@@ -114,13 +92,13 @@ export default function AboutPage() {
       </section>
 
       {/* ---- process ---- */}
-      <section aria-labelledby="process-heading" className="defer-paint border-t border-rule bg-surface">
+      <section aria-labelledby="process-heading" className="defer-paint border-t border-rule bg-surface-raised">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="max-w-2xl">
             <p className="eyebrow eyebrow-accent">How the journal club works</p>
             <h2
               id="process-heading"
-              className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.06]"
+              className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.06] text-ink"
             >
               Five steps, every month.
             </h2>
@@ -135,7 +113,7 @@ export default function AboutPage() {
                   </p>
                   <span aria-hidden className="h-px flex-1 bg-rule" />
                 </div>
-                <h3 className="mt-6 font-display text-[1.5rem] leading-[1.2]">
+                <h3 className="mt-6 font-display text-[1.5rem] leading-[1.2] text-ink">
                   {step.verb}
                 </h3>
                 <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-60">
@@ -148,19 +126,21 @@ export default function AboutPage() {
       </section>
 
       {/* ---- values ---- */}
-      <section aria-labelledby="values-heading" className="defer-paint border-t border-rule">
+      <section aria-labelledby="values-heading" className="defer-paint border-t border-rule bg-surface">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <p className="eyebrow eyebrow-accent">How we work</p>
           <h2
             id="values-heading"
-            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08]"
+            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink"
           >
             Four commitments
           </h2>
           <dl className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2">
             {values.map((v) => (
               <div key={v.title} className="border-t border-rule pt-7">
-                <dt className="text-[1.375rem] leading-[1.2]">{v.title}</dt>
+                <dt className="font-display text-[1.375rem] leading-[1.2] text-ink">
+                  {v.title}
+                </dt>
                 <dd className="mt-3.5 max-w-[46ch] text-[0.9375rem] leading-relaxed text-ink-60">
                   {v.body}
                 </dd>
@@ -171,41 +151,68 @@ export default function AboutPage() {
       </section>
 
       {/* ---- team ---- */}
-      <section aria-labelledby="team-heading" className="defer-paint border-t border-rule bg-surface">
+      <section aria-labelledby="team-heading" className="defer-paint border-t border-rule bg-surface-raised">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <p className="eyebrow eyebrow-accent">The club</p>
           <h2
             id="team-heading"
-            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08]"
+            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink"
           >
             Executive &amp; editorial team
           </h2>
 
-          <ul className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-            {team.map((m) => (
-              <li key={m.name} className="border-t border-rule pt-7">
-                <p className="font-display text-[1.5rem] leading-tight text-ink">
-                  {m.name}
-                </p>
-                <p className="mt-2 text-[0.75rem] font-medium tracking-[0.12em] text-accent uppercase">
-                  {m.role}
-                </p>
-                <p className="mt-4 max-w-[40ch] text-[0.875rem] leading-relaxed text-ink-60">
-                  {m.bio}
-                </p>
+          <figure className="mt-14">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-lg border border-gold/30 bg-canvas-deep/60">
+              <Image
+                src={executiveCouncilPhoto.src}
+                alt={executiveCouncilPhoto.alt}
+                fill
+                sizes="(min-width: 1200px) 1120px, 100vw"
+                className="object-cover"
+                priority={false}
+              />
+            </div>
+            <figcaption className="mt-3 text-[0.75rem] font-medium tracking-[0.12em] text-gold-ink uppercase">
+              2026 Executive Council
+            </figcaption>
+          </figure>
+
+          <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {executives.map((m, index) => (
+              <li key={m.name}>
+                <figure className="group flex h-full flex-col overflow-hidden rounded-lg border border-gold/30 bg-canvas-deep/60 backdrop-blur-md transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-gold/70 hover:shadow-[0_18px_40px_-24px_rgba(0,0,0,0.8),0_0_0_1px_rgba(245,180,25,0.18)] motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-canvas-deep">
+                    <Image
+                      src={m.image}
+                      alt={`Portrait of ${m.name}`}
+                      fill
+                      sizes="(min-width: 1280px) 220px, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                    />
+                  </div>
+                  <figcaption className="flex flex-1 flex-col gap-2 p-5">
+                    <span
+                      aria-hidden
+                      className="font-mono text-[0.6875rem] tracking-[0.18em] text-gold/70 tabular-nums"
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="font-display text-[1.25rem] leading-[1.15] text-ink">
+                      {m.name}
+                    </h3>
+                    <p className="text-[0.6875rem] leading-relaxed font-medium tracking-[0.12em] text-accent uppercase">
+                      {m.role}
+                    </p>
+                  </figcaption>
+                </figure>
               </li>
             ))}
           </ul>
-
-          <p className="mt-14 max-w-[52ch] text-[0.8125rem] leading-relaxed text-ink-40">
-            SAMPLE CONTENT — these are placeholder names and roles. Replace with
-            the current executive and editorial board before launch.
-          </p>
         </div>
       </section>
 
       {/* ---- history ---- */}
-      <section aria-labelledby="history-heading" className="defer-paint border-t border-rule">
+      <section aria-labelledby="history-heading" className="defer-paint border-t border-rule bg-surface">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <h2

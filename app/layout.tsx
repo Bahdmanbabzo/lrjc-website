@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Newsreader } from "next/font/google";
 import "./globals.css";
+import { SiteBackground } from "@/components/site-background";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { site } from "@/lib/site";
@@ -17,6 +18,11 @@ const newsreader = Newsreader({
   display: "swap",
   style: ["normal", "italic"],
 });
+
+export const viewport: Viewport = {
+  themeColor: "#153c59",
+  colorScheme: "dark",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -41,15 +47,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${newsreader.variable}`}>
       <body className="min-h-screen antialiased">
+        <SiteBackground />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:text-paper"
         >
           Skip to content
         </a>
-        <SiteHeader />
-        <main id="main">{children}</main>
-        <SiteFooter />
+        <div className="relative z-10">
+          <SiteHeader />
+          <main id="main">{children}</main>
+          <SiteFooter />
+        </div>
       </body>
     </html>
   );
