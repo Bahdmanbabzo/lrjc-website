@@ -138,7 +138,7 @@ export default async function ResourcesPage() {
         <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
           <div>
             <p className="eyebrow eyebrow-accent">01</p>
-            <h2 id="appraisal-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-ink">
+            <h2 id="appraisal-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-accent">
               Critical appraisal &amp; methodology
             </h2>
           </div>
@@ -146,7 +146,7 @@ export default async function ResourcesPage() {
             {toolkits.map((t) => (
               <li key={t.name} className="border-t border-rule pt-6">
                 <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="text-[1.125rem] leading-snug text-ink">{t.name}</h3>
+                  <h3 className="text-[1.125rem] leading-snug text-accent">{t.name}</h3>
                   <span className="shrink-0 text-[0.625rem] tracking-[0.12em] text-ink-40 uppercase">
                     {t.note}
                   </span>
@@ -174,14 +174,14 @@ export default async function ResourcesPage() {
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <div>
               <p className="eyebrow eyebrow-accent">02</p>
-              <h2 id="search-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-ink">
+              <h2 id="search-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-accent">
                 Literature search
               </h2>
             </div>
             <ul className="grid gap-x-10 gap-y-9 sm:grid-cols-2">
               {search.map((t) => (
                 <li key={t.name} className="border-t border-rule pt-6">
-                  <h3 className="text-[1.125rem] leading-snug text-ink">{t.name}</h3>
+                  <h3 className="text-[1.125rem] leading-snug text-accent">{t.name}</h3>
                   <p className="mt-2.5 max-w-[42ch] text-[0.875rem] leading-relaxed text-ink-60">
                     {t.body}
                   </p>
@@ -206,14 +206,14 @@ export default async function ResourcesPage() {
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <div>
               <p className="eyebrow eyebrow-accent">03</p>
-              <h2 id="software-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-ink">
+              <h2 id="software-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-accent">
                 Software &amp; tools
               </h2>
             </div>
             <ul className="grid gap-x-10 gap-y-9 sm:grid-cols-2">
               {software.map((t) => (
                 <li key={t.name} className="border-t border-rule pt-6">
-                  <h3 className="text-[1.125rem] leading-snug text-ink">{t.name}</h3>
+                  <h3 className="text-[1.125rem] leading-snug text-accent">{t.name}</h3>
                   <p className="mt-2.5 max-w-[42ch] text-[0.875rem] leading-relaxed text-ink-60">
                     {t.body}
                   </p>
@@ -238,7 +238,7 @@ export default async function ResourcesPage() {
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <div>
               <p className="eyebrow eyebrow-accent">04</p>
-              <h2 id="stats-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-ink">
+              <h2 id="stats-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-accent">
                 Five things we keep saying
               </h2>
             </div>
@@ -265,7 +265,7 @@ export default async function ResourcesPage() {
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <div>
               <p className="eyebrow eyebrow-accent">05</p>
-              <h2 id="club-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-ink">
+              <h2 id="club-heading" className="mt-5 text-[1.625rem] leading-[1.2] text-accent">
                 Our own material
               </h2>
             </div>
@@ -283,7 +283,7 @@ export default async function ResourcesPage() {
               </div>
 
               <div className="mt-16 border-t border-rule pt-10">
-                <h3 className="text-[0.8125rem] font-medium tracking-[0.14em] text-ink uppercase">
+                <h3 className="text-[0.8125rem] font-medium tracking-[0.14em] text-accent uppercase">
                   Session format
                 </h3>
                 <dl className="mt-7 grid gap-6 sm:grid-cols-2">

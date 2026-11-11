@@ -134,11 +134,16 @@
   h1,
   h2,
   h3,
-  h4 {
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     font-weight: 400;
     letter-spacing: -0.02em;
     text-wrap: balance;
+    /* Every heading renders in Amber Gold; pages opt out with a text-* utility
+       (e.g. the homepage hero h1 keeps its cream + accent mix). */
+    color: var(--color-accent);
   }
 
   p {
@@ -436,6 +441,16 @@
     color: var(--color-gold-muted);
   }
 
+  /* Heading tags styled as eyebrow labels also render in Amber Gold. */
+  h1.eyebrow,
+  h2.eyebrow,
+  h3.eyebrow,
+  h4.eyebrow,
+  h5.eyebrow,
+  h6.eyebrow {
+    color: var(--color-gold-muted);
+  }
+
   /* Animated hairline underline for inline text links */
   .link-underline {
     position: relative;
@@ -481,7 +496,7 @@
   .prose-editorial h2 {
     font-size: 1.625rem;
     line-height: 1.22;
-    color: var(--color-ink-bright);
+    color: var(--color-accent);
     margin-top: 3rem;
     margin-bottom: -0.5rem;
   }
@@ -489,7 +504,7 @@
   .prose-editorial h3 {
     font-size: 1.25rem;
     line-height: 1.3;
-    color: var(--color-ink-bright);
+    color: var(--color-accent);
     margin-top: 2.25rem;
     margin-bottom: -0.75rem;
   }
@@ -497,7 +512,7 @@
   .prose-editorial h4 {
     font-size: 1rem;
     font-weight: 500;
-    color: var(--color-ink-bright);
+    color: var(--color-accent);
     letter-spacing: 0;
     margin-top: 2rem;
   }

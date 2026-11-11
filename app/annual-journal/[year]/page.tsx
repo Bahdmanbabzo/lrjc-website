@@ -100,7 +100,7 @@ export default async function IssuePage({ params }: Params) {
       {/* ---- contents ---- */}
       <section aria-labelledby="contents-heading" className="border-t border-rule bg-surface-raised">
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-28">
-          <h2 id="contents-heading" className="text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink">
+          <h2 id="contents-heading" className="text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-accent">
             Contents
           </h2>
 
@@ -111,7 +111,7 @@ export default async function IssuePage({ params }: Params) {
                   <p className="text-[0.75rem] font-medium text-gold-ink tabular-nums">
                     {String(gi + 1).padStart(2, "0")}
                   </p>
-                  <h3 className="text-[0.8125rem] font-medium tracking-[0.14em] text-ink uppercase">
+                  <h3 className="text-[0.8125rem] font-medium tracking-[0.14em] text-accent uppercase">
                     {group.section}
                   </h3>
                   <p className="ml-auto text-[0.75rem] text-ink-40 tabular-nums">
@@ -173,7 +173,7 @@ export default async function IssuePage({ params }: Params) {
             <p className="eyebrow eyebrow-accent">Editorial</p>
             <h2
               id="editorial-heading"
-              className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.1] text-ink"
+              className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.1] text-accent"
             >
               {issue.editorialTitle ?? "Editorial"}
             </h2>
@@ -192,7 +192,7 @@ export default async function IssuePage({ params }: Params) {
         <div className="mx-auto max-w-[1200px] px-gutter py-20 md:py-24">
           <h2
             id="contributors-heading"
-            className="text-[0.8125rem] font-medium tracking-[0.14em] text-ink uppercase"
+            className="text-[0.8125rem] font-medium tracking-[0.14em] text-accent uppercase"
           >
             Contributors
           </h2>

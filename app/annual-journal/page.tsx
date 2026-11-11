@@ -42,7 +42,7 @@ export default async function AnnualJournalIndexPage() {
                   </div>
 
                   <div>
-                    <h2 className="max-w-[24ch] font-display text-[clamp(1.5rem,3vw,2.125rem)] leading-[1.12] text-ink transition-colors duration-200 group-hover:text-accent">
+                    <h2 className="max-w-[24ch] font-display text-[clamp(1.5rem,3vw,2.125rem)] leading-[1.12] text-accent transition-colors duration-200 group-hover:text-ink">
                       {issue.title}
                     </h2>
                     {issue.theme && (

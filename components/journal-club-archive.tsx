@@ -53,7 +53,7 @@ export function JournalClubProcess() {
               <p className="text-[0.75rem] font-medium text-gold-ink tabular-nums">
                 {step.number}
               </p>
-              <h3 className="mt-4 font-display text-xl text-ink">{step.verb}</h3>
+              <h3 className="mt-4 font-display text-xl text-accent">{step.verb}</h3>
               <p className="mt-2.5 text-[0.875rem] leading-relaxed text-ink-60">
                 {step.body}
               </p>

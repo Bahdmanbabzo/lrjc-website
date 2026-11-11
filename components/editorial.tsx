@@ -15,7 +15,7 @@ export function SectionHeading({
   return (
     <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       <p className="eyebrow eyebrow-accent">{eyebrow}</p>
-      <h2 className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.06] text-ink">
+      <h2 className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.06] text-accent">
         {title}
       </h2>
       {lede && <p className="mt-6 text-[1.0625rem] leading-relaxed text-ink-60">{lede}</p>}
@@ -69,7 +69,7 @@ export function PageHeader({
     <header className="border-b border-rule bg-surface">
       <div className="mx-auto max-w-[1200px] px-gutter pt-20 pb-16 md:pt-32 md:pb-20">
         <p className="eyebrow eyebrow-accent">{eyebrow}</p>
-        <h1 className="mt-6 max-w-[16ch] text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.02] text-ink">
+        <h1 className="mt-6 max-w-[16ch] text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.02] text-accent">
           {title}
         </h1>
         {lede && (

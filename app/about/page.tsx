@@ -41,21 +41,6 @@ const values = [
   },
 ];
 
-const milestones = [
-  {
-    year: "2025",
-    text: "Formed as a reading group of six students meeting fortnightly in the College of Medicine library.",
-  },
-  {
-    year: "2026",
-    text: "Began publishing written appraisals of every session, and launched the first annual journal volume.",
-  },
-  {
-    year: "2026",
-    text: "First member research projects established, including the segmentation and infectious disease working groups.",
-  },
-];
-
 export default function AboutPage() {
   return (
     <PageTransition>
@@ -68,7 +53,7 @@ export default function AboutPage() {
       {/* ---- mission ---- */}
       <section aria-labelledby="mission-heading" className="mx-auto max-w-[1200px] px-gutter bg-surface py-20 md:py-28">
         <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
-          <h2 id="mission-heading" className="text-[0.8125rem] font-medium tracking-[0.14em] text-ink uppercase">
+          <h2 id="mission-heading" className="text-[0.8125rem] font-medium tracking-[0.14em] text-accent uppercase">
             Our mission
           </h2>
           <div className="max-w-[62ch]">
@@ -98,7 +83,7 @@ export default function AboutPage() {
             <p className="eyebrow eyebrow-accent">How the journal club works</p>
             <h2
               id="process-heading"
-              className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.06] text-ink"
+              className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.06] text-accent"
             >
               Five steps, every month.
             </h2>
@@ -113,7 +98,7 @@ export default function AboutPage() {
                   </p>
                   <span aria-hidden className="h-px flex-1 bg-rule" />
                 </div>
-                <h3 className="mt-6 font-display text-[1.5rem] leading-[1.2] text-ink">
+                <h3 className="mt-6 font-display text-[1.5rem] leading-[1.2] text-accent">
                   {step.verb}
                 </h3>
                 <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-60">
@@ -131,7 +116,7 @@ export default function AboutPage() {
           <p className="eyebrow eyebrow-accent">How we work</p>
           <h2
             id="values-heading"
-            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink"
+            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-accent"
           >
             Four commitments
           </h2>
@@ -156,7 +141,7 @@ export default function AboutPage() {
           <p className="eyebrow eyebrow-accent">The club</p>
           <h2
             id="team-heading"
-            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink"
+            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-accent"
           >
             Executive &amp; editorial team
           </h2>
@@ -197,7 +182,7 @@ export default function AboutPage() {
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="font-display text-[1.25rem] leading-[1.15] text-ink">
+                    <h3 className="font-display text-[1.25rem] leading-[1.15] text-accent">
                       {m.name}
                     </h3>
                     <p className="text-[0.6875rem] leading-relaxed font-medium tracking-[0.12em] text-accent uppercase">
@@ -217,22 +202,46 @@ export default function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
             <h2
               id="history-heading"
-              className="text-[0.8125rem] font-medium tracking-[0.14em] text-ink uppercase"
+              className="text-[0.8125rem] font-medium tracking-[0.14em] text-accent uppercase"
             >
               A short history
             </h2>
-            <ol className="max-w-[58ch] list-none">
-              {milestones.map((m) => (
-                <li key={m.text} className="grid grid-cols-[4rem_1fr] gap-6 border-t border-rule py-7">
-                  <p className="text-[0.875rem] font-medium text-gold-ink tabular-nums">
-                    {m.year}
-                  </p>
-                  <p className="text-[0.9375rem] leading-relaxed text-ink-60">
-                    {m.text}
-                  </p>
-                </li>
-              ))}
-            </ol>
+            <div className="flex max-w-[62ch] flex-col gap-5">
+              <p className="text-[0.9375rem] leading-relaxed text-ink-60">
+                On 26 June 2021, the research committee launched its inaugural
+                project, Research Workshop 1.0. The four-day programme, spanning
+                four weeks, ran from 26 June to 17 July 2021 at the Multipurpose
+                Hall, LASUCOM. It was attended by several facilitators and
+                researchers in clinical and experimental medicine and health,
+                alongside student representatives from all classes, 200 to 600
+                level.
+              </p>
+              <p className="text-[0.9375rem] leading-relaxed text-ink-60">
+                The workshop featured dignitary facilitators including Prof K. O.
+                Wright (Department of Community Health), Dr Isaac Fadewa (a
+                researcher par excellence and One Young World ambassador), Dr
+                Toluwalase Awoyemi (a Rhodes Scholar and PhD scholar at the
+                University of Oxford), Mr Ernest Owojori (data researcher) and
+                Aborede Abdulahi (public health researcher). Across the four
+                sessions, mean attendance was 41.
+              </p>
+              <p className="text-[0.9375rem] leading-relaxed text-ink-60">
+                Topics taught included the A–Z of research writing, accessing
+                research opportunities and data analysis — delivered by lecturers
+                from within LASUCOM and beyond to about 60 students. Abstract
+                writing was also taught, focused on those particularly interested
+                in submitting an abstract for the research conference on 4
+                November 2021; that session was taken by Agboola Progress.
+                Eligible candidates were presented with certificates after the
+                sessions and divided into groups to work collectively on their
+                agreed research projects.
+              </p>
+              <p className="text-[0.9375rem] leading-relaxed text-ink-60">
+                The next research conference followed in 2022, and the one after
+                that in 2025. The 2026 conference will feature the maiden journal
+                launch.
+              </p>
+            </div>
           </div>
         </div>
       </section>

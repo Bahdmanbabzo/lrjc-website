@@ -135,7 +135,7 @@ export default async function HomePage() {
             <p className="eyebrow eyebrow-accent" id="pillars-heading">
               What we do
             </p>
-            <h2 className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.06] text-ink">
+            <h2 className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.06] text-accent">
               Four things we hold ourselves to.
             </h2>
           </div>
@@ -146,7 +146,7 @@ export default async function HomePage() {
                 <p className="text-[0.75rem] font-medium text-gold-ink tabular-nums">
                   {p.number}
                 </p>
-                <h3 className="mt-5 text-[1.625rem] leading-[1.15] text-ink">
+                <h3 className="mt-5 text-[1.625rem] leading-[1.15] text-accent">
                   {p.title}
                 </h3>
                 <p className="mt-4 max-w-[44ch] text-[0.9375rem] leading-relaxed text-ink-60">
@@ -166,7 +166,7 @@ export default async function HomePage() {
               <p className="eyebrow eyebrow-accent" id="archive-heading">
                 From the journal club
               </p>
-              <h2 className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink">
+              <h2 className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-accent">
                 Recent reviews
               </h2>
             </div>
@@ -216,7 +216,7 @@ export default async function HomePage() {
                 <p className="eyebrow eyebrow-accent" id="journal-heading">
                   Annual journal
                 </p>
-                <h2 className="mt-5 max-w-[16ch] text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.06] text-ink">
+                <h2 className="mt-5 max-w-[16ch] text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.06] text-accent">
                   Volume {issue.issue.volume} · {issue.issue.year}
                 </h2>
                 <p className="mt-7 max-w-[52ch] text-[1.0625rem] leading-relaxed text-ink-60">

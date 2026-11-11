@@ -44,7 +44,7 @@ export default function ResearchPage() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="eyebrow eyebrow-accent">Projects</p>
-            <h2 id="projects-heading" className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink">
+            <h2 id="projects-heading" className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-accent">
               Ongoing and completed work
             </h2>
           </div>
@@ -138,7 +138,7 @@ export default function ResearchPage() {
           <p className="eyebrow eyebrow-accent">Published</p>
           <h2
             id="publications-heading"
-            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink"
+            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-accent"
           >
             Publications
           </h2>
@@ -186,7 +186,7 @@ export default function ResearchPage() {
           <p className="eyebrow eyebrow-accent">Presented</p>
           <h2
             id="presentations-heading"
-            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink"
+            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-accent"
           >
             Conference presentations
           </h2>
@@ -222,7 +222,7 @@ export default function ResearchPage() {
           <p className="eyebrow eyebrow-accent">Get involved</p>
           <h2
             id="opportunities-heading"
-            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-ink"
+            className="mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] leading-[1.08] text-accent"
           >
             Ways to take part
           </h2>
@@ -233,7 +233,7 @@ export default function ResearchPage() {
                 <p className="text-[0.75rem] font-medium text-gold-ink tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <h3 className="mt-5 text-[1.375rem] leading-[1.2] text-ink">
+                <h3 className="mt-5 text-[1.375rem] leading-[1.2] text-accent">
                   {o.title}
                 </h3>
                 <p className="mt-3 text-[0.75rem] tracking-[0.1em] text-accent uppercase">

@@ -114,7 +114,7 @@ export default async function ArticlePage({ params }: Params) {
 
             {/* ---- Authors Section ---- */}
             <div>
-              <h2 className="font-sans text-[0.6875rem] font-medium tracking-[0.2em] text-ink-60 uppercase">
+              <h2 className="font-sans text-[0.6875rem] font-medium tracking-[0.2em] text-accent uppercase">
                 AUTHORS
               </h2>
               <p className="mt-2.5 font-display text-[1.125rem] leading-[1.5] text-ink">
@@ -131,7 +131,7 @@ export default async function ArticlePage({ params }: Params) {
             {a.original && (
               <div className="mt-8 border border-gold/20 bg-canvas-deep/55 p-5">
                 <div className="flex items-center justify-between gap-2">
-                  <h2 className="algo-meta-mono text-ink-60">
+                  <h2 className="algo-meta-mono text-accent">
                     Paper Under Review
                   </h2>
                   <span
@@ -188,7 +188,7 @@ export default async function ArticlePage({ params }: Params) {
             <div className="flex items-baseline justify-between gap-4">
               <h2
                 id="summary-heading"
-                className="font-display text-[1.625rem] leading-[1.2] text-ink"
+                className="font-display text-[1.625rem] leading-[1.2] text-accent"
               >
                 Summary
               </h2>
@@ -211,7 +211,7 @@ export default async function ArticlePage({ params }: Params) {
               className="mt-10 border border-gold/20 bg-canvas-deep/50 p-5"
             >
               <div className="flex items-center justify-between gap-2">
-                <h2 id="pico-heading" className="algo-meta-mono text-ink-60">
+                <h2 id="pico-heading" className="algo-meta-mono text-accent">
                   Study Parameters (PICO)
                 </h2>
                 <span
@@ -250,7 +250,7 @@ export default async function ArticlePage({ params }: Params) {
             <div className="flex items-baseline justify-between gap-4">
               <h2
                 id="appraisal-heading"
-                className="font-display text-[1.625rem] leading-[1.2] text-ink"
+                className="font-display text-[1.625rem] leading-[1.2] text-accent"
               >
                 {a.original ? "Critical appraisal" : "Article"}
               </h2>
@@ -280,7 +280,7 @@ export default async function ArticlePage({ params }: Params) {
                   <section aria-labelledby="strengths-heading">
                     <h2
                       id="strengths-heading"
-                      className="algo-meta-mono text-ink-60"
+                      className="algo-meta-mono text-accent"
                     >
                       Strengths
                     </h2>
@@ -301,7 +301,7 @@ export default async function ArticlePage({ params }: Params) {
                   <section aria-labelledby="limitations-heading">
                     <h2
                       id="limitations-heading"
-                      className="algo-meta-mono text-ink-60"
+                      className="algo-meta-mono text-accent"
                     >
                       Limitations
                     </h2>
@@ -322,7 +322,7 @@ export default async function ArticlePage({ params }: Params) {
                   <section aria-labelledby="takeaways-heading">
                     <h2
                       id="takeaways-heading"
-                      className="algo-meta-mono text-ink-60"
+                      className="algo-meta-mono text-accent"
                     >
                       Key Takeaways
                     </h2>
@@ -353,7 +353,7 @@ export default async function ArticlePage({ params }: Params) {
 
               <section aria-labelledby="refs-heading" className="defer-paint">
                 <div className="flex items-center justify-between gap-2">
-                  <h2 id="refs-heading" className="algo-meta-mono text-ink-60">
+                  <h2 id="refs-heading" className="algo-meta-mono text-accent">
                     References
                   </h2>
                   <span
