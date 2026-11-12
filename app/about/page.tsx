@@ -147,13 +147,14 @@ export default function AboutPage() {
           </h2>
 
           <figure className="mt-14">
-            <div className="relative aspect-[16/9] overflow-hidden rounded-lg border border-gold/30 bg-canvas-deep/60">
+            <div className="overflow-hidden rounded-lg border border-gold/30 bg-canvas-deep/60">
               <Image
                 src={executiveCouncilPhoto.src}
                 alt={executiveCouncilPhoto.alt}
-                fill
+                width={1920}
+                height={1386}
                 sizes="(min-width: 1200px) 1120px, 100vw"
-                className="object-cover"
+                className="h-auto w-full"
                 priority={false}
               />
             </div>

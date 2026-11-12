@@ -130,7 +130,7 @@ Push to a Git repository connected to Vercel. Set:
 ```
 NEXT_PUBLIC_SITE_URL=https://<your-domain>
 RESEND_API_KEY=re_...            # optional; see below
-CONTACT_TO=research@lasuma.edu.ng
+CONTACT_TO=lasumsarjc@gmail.com
 CONTACT_FROM=LRJC Website <contact@your-domain>
 ```
 

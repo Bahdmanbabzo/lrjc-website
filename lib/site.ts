@@ -13,10 +13,10 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://lrjc.org",
   locale: "en_NG",
   contact: {
-    email: "research@lasuma.edu.ng",
+    email: "lasumsarjc@gmail.com",
     social: [
       { label: "Instagram", href: "https://instagram.com/lasumarjc" },
-      { label: "LinkedIn", href: "https://linkedin.com/company/lasumarjc" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/company/lrjc" },
     ],
   },
 } as const;
@@ -147,6 +147,6 @@ export const executives = [
 ] as const;
 
 export const executiveCouncilPhoto = {
-  src: "/figures/executives/executives-2026.webp",
+  src: "/figures/executives/executives-2026-council.webp",
   alt: "The 2026 LASUMSA Research & Journal Club executive council.",
 } as const;
